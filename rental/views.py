@@ -175,11 +175,34 @@ def book_form(request):
 
 
 def register_form(request):
-    return render(request, 'Properties/register.html')
+
+    book = Signup.objects.all()
+    response_data = {}
+
+    if request.method == 'POST':
+
+        name = request.POST["name"]
+        username = request.POST["username"]
+        password = request.POST['password']
+        emaille = request.POST['email']
+
+        Signup.objects.create(
+            U_name=name,
+            U_username=username,
+            U_Userpassword=password,
+            U_email=emaille,
+        )
+        return render(request, 'Properties/third.html')
+
+    return render(request, 'Properties/third.html')
 
 
 def login_form(request):
     return render(request, 'Properties/login.html')
+
+
+def signup_form(request):
+    return render(request, 'Properties/register.html')
 
 
 def search_result_form(request):
