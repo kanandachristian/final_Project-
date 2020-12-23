@@ -1,0 +1,663 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.aside {
+    width: 30%;
+    background-color: rgb(238, 238, 238);
+    height: auto;
+}
+
+.container {
+    background-color: cornflowerblue;
+    margin-left: 5%;
+    width: 90%;
+}
+
+.carte {
+    overflow: hidden;
+    position: relative;
+    height: 540px;
+}
+
+.image-pic {
+    width: 100%;
+    height: 250px;
+}
+
+.absolute_url {
+    position: absolute;
+    width: 100%;
+    height: 540px;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s;
+}
+
+.absolute_url a {
+    background-color: teal;
+    color: white;
+    padding: 10px 10%;
+    text-decoration: none;
+    position: relative;
+    top: 30%;
+    left: 35%;
+    font-family: 'candal', serif;
+    border-radius: 5%;
+}
+
+.carte:hover .absolute_url {
+    visibility: visible;
+    opacity: 1;
+}
+
+.carte .property {
+    text-decoration: none;
+    font-family: 'calibri', serif;
+    font-weight: bolder;
+}
+
+#more {
+    display: none;
+}
+
+
+/* .price-adv{
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 1%;
+} */
+
+.co-block-type .price {
+    background-color: rgba(3, 39, 39, 1);
+    border-bottom-left-radius: 6px;
+    padding: 2%;
+    width: 50%;
+    height: 50px;
+    color: white;
+}
+
+.co-block-type .advert {
+    background-color: rgb(219, 155, 15);
+    border-bottom-right-radius: 6px;
+    padding: 2%;
+    width: 50%;
+    height: 50px;
+    display: center;
+    color: white;
+}
+
+.link-link {
+    text-decoration: none;
+    border-style: none;
+    color: rgb(0, 0, 0);
+    transition: ease .3s;
+}
+
+.link-link:hover {
+    font-weight: bolder;
+    color: rgb(49, 47, 47);
+    border-style: none;
+    border-color: darkgrey;
+}
+
+.description span {
+    font-size: 100%;
+    font-family: 'calibri';
+    text-align: justify;
+}
+
+.description .i-d {
+    color: rgb(70, 67, 67);
+    font-size: large;
+    float: right;
+    margin: 2%;
+}
+
+
+/* SECOND PAGE */
+
+.body {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.container-detail {
+    padding-left: 4%;
+}
+
+
+/* .container-detai2{
+    margin-top: 0%;
+    padding: 0px;
+    background-color: rgb(0, 122, 245);
+} */
+
+.find-out {
+    width: 90%;
+    background-color: rgb(238, 232, 232);
+    height: auto;
+    font-family: 'calibri';
+    font-size: 190%;
+    padding: 2%;
+    border-radius: 5px;
+    margin: 2% 2% 0% 5%;
+    word-wrap: break-word;
+}
+
+.image-detail {
+    width: 100%;
+    height: 190px;
+    position: sticky;
+}
+
+.aside-detail {
+    /* background-color: lightgray; */
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* corossel */
+
+.post-infos {
+    padding: 1%;
+}
+
+.post-infos .co-price {
+    font-size: 150%;
+    font-family: serif;
+}
+
+.post-infos .co-price span {
+    font-size: 60%;
+}
+
+.co-block-type {
+    display: flex;
+    padding-left: 0%;
+}
+
+.co-block-type .co-apartment {
+    background-color: rgba(3, 39, 39, 1);
+    border-top-left-radius: 6px;
+    padding: 2%;
+    width: 50%;
+    height: 30px;
+    color: white;
+}
+
+.co-block-type .co-rent {
+    background-color: rgb(219, 155, 15);
+    border-bottom-right-radius: 6px;
+    padding: 2%;
+    width: 50%;
+    height: 30px;
+    color: white;
+}
+
+
+/* end corossel */
+
+
+/* page wraper */
+
+.container-wraper {
+    margin-bottom: 2%;
+}
+
+.page-wrapper {
+    min-height: 100%;
+}
+
+.page-wrapper a:hover {
+    color: rgba(3, 39, 39, 1);
+}
+
+.post-slider {
+    position: relative;
+}
+
+.post-slider .next {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    font-size: 2em;
+    color: rgba(3, 39, 39, 1);
+    cursor: pointer;
+}
+
+.post-slider .prev {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    font-size: 2em;
+    color: rgba(3, 39, 39, 1);
+    cursor: pointer;
+}
+
+.post-slider .post-wrapper {
+    width: 80%;
+    height: 360px;
+    margin: 0px auto;
+    overflow: hidden;
+    padding: 10px 0px 10px 0px;
+}
+
+.post-slider .post-wrapper .post {
+    height: 340px;
+    width: 300px;
+    margin: 0px 10px;
+    display: inline-block;
+    background: white;
+    border-radius: 5px;
+    border: 1% white;
+    /* box-shadow: -1rem 1rem 1rem 1rem #44444433; */
+}
+
+.post-slider .post-wrapper .post:focus {
+    outline-color: rgb(190, 186, 186);
+}
+
+.post-slide .post-wrapper .post .post-info {
+    height: 130px;
+    padding: 0px 5px;
+}
+
+.post-slider .post-wrapper .post .slider-image {
+    width: 100%;
+    height: 200px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.coll {
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+
+/* end wraper */
+
+
+/* Third Page */
+
+.container-third {
+    min-height: 100%;
+}
+
+.semicontainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.container-left {
+    width: 60%;
+    height: auto;
+    padding: 1%;
+    background-color: white;
+}
+
+.header-title {
+    width: 100%;
+    padding: 1%;
+    font-size: 200%;
+    background-color: rgb(238, 232, 232);
+    border-radius: 5PX;
+}
+
+.house-container {
+    padding-top: 1%;
+}
+
+.profil {
+    width: 100%;
+    background-color: rgb(192, 184, 184);
+    height: auto;
+    border-radius: 5px;
+}
+
+.profil .image-profil {
+    height: 450px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.detail-pic {
+    width: 100%;
+    height: 90px;
+    background-color: rgb(245, 243, 243);
+    margin-top: 1%;
+    /* padding: 1%; */
+    border-radius: 5px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.detail-pic .detail-img {
+    width: 16%;
+    display: inline-block;
+}
+
+.detail-pic .detail-img img {
+    width: 100%;
+    height: 90px;
+    margin-top: 1%;
+    border-radius: 6px;
+}
+
+.detail-overview {
+    width: 100%;
+    height: auto;
+    margin-top: 2%;
+}
+
+.card {
+    margin-bottom: 2%;
+}
+
+.ca {
+    height: 440px;
+}
+
+.card-card {
+    background: #fdfdfd;
+}
+
+.card-header {
+    font-size: 120%;
+    background-color: rgb(238, 232, 232);
+    color: rgba(3, 39, 39, 1);
+}
+
+.detail-overview .card-overview {
+    height: auto;
+    display: flex;
+    padding: 1%;
+}
+
+.right,
+.left {
+    width: 50%;
+    height: auto;
+    font-size: 110%;
+    padding-top: 1%;
+    word-wrap: break-word;
+}
+
+.right span,
+.left span {
+    font-weight: bolder;
+}
+
+.contact {
+    height: 100px;
+}
+
+.card-b-header {
+    text-align: center;
+}
+
+.card-book {
+    padding-left: 7%;
+}
+
+.book {
+    margin-bottom: 2%;
+    width: 100%;
+}
+
+.book .inp {
+    width: 90%;
+    padding: 1%;
+    border: solid 1px;
+    border-radius: 3px;
+}
+
+.book input[type=text]:hover {
+    border: solid 1px rgb(15, 179, 179);
+    border-radius: 4px;
+    transition: ease .1s;
+}
+
+.btn-submit {
+    background-color: rgba(3, 39, 39, 1);
+    color: white;
+    width: 80%;
+    padding: 1%;
+    margin-left: 7%;
+    margin-bottom: 4%;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn-submit:hover {
+    background-color: rgb(8, 83, 83);
+    color: white;
+}
+
+.image-detail {
+    width: 100%;
+}
+
+.off {
+    background-color: rgb(100, 107, 107);
+    color: white;
+}
+
+.pre,
+.nex {
+    position: absolute;
+    top: 55%;
+    color: rgb(230, 233, 212);
+    font-weight: bold;
+    background-color: rgba(30, 51, 51, 0.5);
+    font-size: 150%;
+    padding-left: 3%;
+    padding-right: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+}
+
+.nex {
+    border-radius: 3px 0 0 3px;
+    right: 0;
+    padding-left: 5%;
+    padding-right: 3%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.pre:hover,
+.nex:hover {
+    background-color: rgba(23, 53, 53, 0.9);
+    margin-left: 2%;
+    margin-right: 2%;
+    color: white;
+    transition: ease .3;
+}
+
+
+/* for sec page */
+
+.preve,
+.nexe {
+    position: absolute;
+    top: 60%;
+    color: rgb(230, 233, 212);
+    font-weight: bold;
+    background-color: rgba(30, 51, 51, 0.5);
+    font-size: 150%;
+    padding-left: 3%;
+    padding-right: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+}
+
+.nexe {
+    border-radius: 3px 0 0 3px;
+    right: 0;
+    padding-left: 5%;
+    padding-right: 3%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.preve:hover,
+.nexe:hover {
+    background-color: rgba(230, 221, 211, 0.9);
+    margin-left: 2%;
+    margin-right: 2%;
+    color: white;
+    transition: ease .3;
+}
+
+
+/* end for sec page */
+
+
+/* chat css  */
+
+.card-chat {
+    height: 200px;
+    background-color: rgb(163, 159, 159);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+
+/* end chat css  */
+
+
+/* Map css */
+
+.map {
+    padding: 0;
+    width: 100%;
+}
+
+.map img {
+    width: 100%;
+}
+
+
+/* end map */
+
+.container-right {
+    width: 40%;
+    height: auto;
+    padding: 1%;
+}
+
+.modal-bg {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+    z-index: 99999;
+}
+
+.bg-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal {
+    position: relative;
+    font-family: sans-serif;
+    background-color: white;
+    width: 40%;
+    height: auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal form {
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+}
+
+.modal h4 {
+    text-decoration: none;
+    margin: 2%;
+}
+
+.modal .modal-input {
+    width: 90%;
+    padding: 1%;
+    padding-left: 2%;
+    margin-left: 2.5%;
+}
+
+.modal label {
+    font-family: calibri;
+    font-size: 90%;
+    font-weight: none;
+    text-decoration: none;
+    margin-left: 2.5%;
+}
+
+.modal .submit {
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+    margin-top: 2%;
+    margin-left: 2.5%;
+}
+
+.modal-closer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+    font-size: 90%;
+    background-color: rgb(206, 62, 36);
+    color: rgb(255, 255, 255);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 747px) {
+    .semicontainer {
+        display: block;
+    }
+    .container-left {
+        width: 100%;
+    }
+    .container-right {
+        width: 100%;
+    }
+}
+
+
+/* end page */

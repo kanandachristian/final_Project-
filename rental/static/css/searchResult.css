@@ -1,0 +1,128 @@
+.all-searchResult {
+    padding: 1% 4% 1% 4%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.infor-result {
+    padding-top: 3%;
+    padding-left: 2%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.infor-result .result {
+    font-size: 150%;
+    font-weight: bolder;
+}
+
+.infor-result .is-property {
+    background-color: rgb(218, 218, 218);
+    padding: 1%;
+    width: 98%;
+}
+
+.infor-result .no-property {
+    background-color: rgb(236, 170, 158);
+    padding: 1%;
+    width: 90%;
+}
+
+.info-propose {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 2%;
+    font-size: 150%;
+    color: rgb(3, 34, 34);
+}
+
+.searchResult {
+    /* background-color: rgb(247, 247, 247); */
+}
+
+.searchResult .bordere {
+    border-bottom: solid 2px #ccc;
+    padding: 2%;
+}
+
+.carde a {
+    text-decoration: none;
+}
+
+.carde {
+    padding: 3%;
+    height: 350px;
+}
+
+.image-position {
+    width: 100%;
+    height: 150px;
+    position: relative;
+}
+
+.image-position img {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.image-position:hover {
+    padding: 2%;
+    transition: ease 0.3s;
+}
+
+.image-position .prix {
+    bottom: 2px;
+    right: 1px;
+    background-color: rgb(21, 22, 21);
+    color: white;
+    width: 70%;
+    height: 30px;
+    padding: 0.5%;
+    position: absolute;
+    text-align: right;
+}
+
+.informations {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-top: 3%;
+}
+
+.informations .title {
+    padding-top: 4%;
+    font-size: 120%;
+    color: rgb(10, 56, 56);
+}
+
+.link {
+    text-decoration: none;
+    color: rgb(104, 101, 101);
+}
+
+.link:hover {
+    color: rgb(3, 48, 27);
+}
+
+.about-rent {
+    color: white;
+    font-size: 120%;
+}
+
+.about-rent .s1 {
+    padding: 2% 5% 2% 5%;
+    background-color: rgb(42, 59, 59);
+    color: white;
+    /* border-bottom-left-radius: 10px; */
+}
+
+.about-rent .s2 {
+    padding: 2% 5% 2% 5%;
+    background-color: rgb(206, 91, 56);
+    color: white;
+    /* border-top-right-radius: 10px; */
+}
+
+.bed-bath {
+    padding-top: 4%;
+    text-align: right;
+}

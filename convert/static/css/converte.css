@@ -1,0 +1,429 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.page-content2 {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 6%;
+    padding-bottom: 4%;
+    margin-left: 5%;
+    margin-right: 5%;
+    /* background-color: white; */
+    min-height: 100%;
+    /* background-image: url(imagemoney.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* .page-content
+{
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 8%;
+  padding-bottom: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: white;
+  height: 400px;
+} */
+
+.currency-content {
+    background: rgb(22, 46, 46);
+    height: auto;
+}
+
+.currency-title {
+    font-size: 200%;
+    font-weight: normal;
+    word-wrap: break-word;
+    padding-top: 5%;
+    padding-bottom: 2%;
+    margin-left: 5%;
+    width: 87%;
+    height: auto;
+    color: white;
+    border-bottom: 1px solid orange;
+}
+
+.currency-field {
+    position: relative;
+    width: 95%;
+    margin: auto;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 200px 200px 70px 300px 70px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.currency-field>div input,
+select {
+    position: relative;
+    padding: 8px;
+    width: 100%;
+    outline: none !important;
+}
+
+.currency-field>div {
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+@media(max-width:700px) {
+    .currency-field {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+.arrow {
+    position: relative;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.arrow a {
+    margin-right: 10px;
+    color: #fff;
+    position: relative;
+    /* background-color: lightcoral; */
+    padding: 10px;
+    padding-right: 200px;
+}
+
+.buttonSubmit {
+    position: relative;
+    margin-top: 25px;
+}
+
+.buttonSubmit button {
+    padding: 10px 20px;
+}
+
+.buton {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    background: coral
+}
+
+
+/* .currency-field
+{
+  position: relative;
+  padding: 5%;
+  color: white;
+  height: auto;
+  width: 95%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  overflow: auto;
+}
+ */
+
+
+/* .amount-name
+{
+  height: auto;
+  width: auto;
+}
+.amount-name .name,
+.currency1-name .name ,
+.currency2-name .name
+{
+  color: white;
+  padding: 2%;
+  font-size: 120%;
+}
+.amount-name .amount
+{
+  margin: 1%;
+  width: auto;
+  height: auto;
+}
+.amount-name .amount .inpute
+{
+  margin-top: 3%;
+  padding: 3%;
+  font-size: 150%;
+  width: 100%;
+  height: 50px;
+  border: 1px solid ;
+  border-radius: 10px;
+  color: rgba(38,38,38,.7);
+  outline: none;
+} */
+
+
+/* currency */
+
+
+/* .currency1-name,
+.currency2-name
+{
+  margin-left: 2%;
+  height: auto;
+  width: auto;
+}
+.currency1-name .currency,
+.currency2-name .currency
+{
+  width: auto;
+  height: auto;
+}
+.currency1-name .currency .selection1,
+.currency2-name .currency .selection2
+{
+  margin: 1%;
+  padding: 1%;
+  font-size: 100%;
+  width: 200px;
+  height: 55px;
+  border: 1px solid ;
+  border-radius: 10px;
+  color: rgba(38,38,38,1) ;
+  outline: none;
+}
+.arrow
+{
+  margin-left: 2%;
+  height: auto;
+  width: auto;
+  padding: 4% 1% 4% 1%;
+  font-size: 240%;
+  outline: none;
+}
+.arrow a
+{
+  text-decoration: none;
+  color: white;
+  outline: none;
+}
+
+.buttonSubmit
+{
+  margin-left: 2%;
+  height: auto;
+  width: 15%;
+  padding-top: 4%;
+  padding-right: 1% ;
+  padding-bottom: 1% ;
+  padding-left: 1%;
+  outline: none;
+}
+
+.buttonSubmit input{
+  width: 100%;
+  padding: 5%;
+  padding-bottom: 1%;
+} */
+
+
+/* .buttonSubmit a
+{
+  padding: 2% ;
+  text-decoration: none;
+  background-color: rgba(255, 127, 39,.7);
+  color: white;
+  border: 0px solid;
+  border-radius: 10px;
+  font-size: 250%;
+} */
+
+.buttonSubmit input {
+    padding: 2%;
+    width: 50%;
+    height: auto;
+    text-decoration: none;
+    background-color: rgba(255, 127, 39, .7);
+    color: white;
+    border: 0px solid;
+    border-radius: 10px;
+    font-size: 250%;
+    outline: none;
+}
+
+.output-content {
+    margin-left: 1%;
+    margin-right: 1%;
+    height: auto;
+    width: auto;
+    text-align: center;
+}
+
+.amount1 {
+    width: auto;
+    height: auto;
+    color: white;
+    font-size: 150%;
+}
+
+.amount2 {
+    margin: 2%;
+    width: auto;
+    height: auto;
+    color: white;
+    font-size: 300%;
+    word-wrap: break-word;
+}
+
+.output-content2 {
+    margin-left: 1%;
+    padding-bottom: 4%;
+    height: auto;
+    width: auto;
+    text-align: center;
+}
+
+.output-content2 .amount3,
+.output-content2 .amount4 {
+    width: auto;
+    height: auto;
+    color: white;
+    font-size: 100%;
+    word-wrap: break-word;
+}
+
+.trust {
+    margin-left: 4%;
+    margin-right: 2%;
+    margin-top: 10%;
+    padding: 1%;
+    color: white;
+    font-size: 120%;
+}
+
+.currency option {
+    font: 300 18px/1.5 "Roboto" sans-serif;
+    background-color: rgba(255, 255, 255, 0.0);
+    color: #262626;
+    padding: 1%;
+}
+
+@media all and (max-width: 800px) {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .buttonSubmit {
+        margin-left: 1%;
+        height: auto;
+        width: 20%;
+        padding: 5% 1% 1% 1%;
+    }
+    .currency-content {
+        background: rgb(22, 46, 46);
+        height: auto;
+    }
+    .page-content2 {
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-top: 30%;
+        padding-bottom: 2%;
+        margin-left: 1%;
+        margin-right: 1%;
+        /* background-color: white; */
+        height: auto;
+        /* background-image: url(imagemoney.jpg); */
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .currency-field {
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 5%;
+        padding-bottom: 2%;
+        color: white;
+        height: auto;
+        width: 100%;
+        display: block;
+        overflow: auto;
+    }
+    .amount-name {
+        height: 100px;
+        width: 80%;
+        margin-left: 3%;
+    }
+    .currency1-name,
+    .currency2-name {
+        height: auto;
+        width: 80%;
+    }
+    .amount-name .name,
+    .currency1-name .name,
+    .currency2-name .name {
+        color: white;
+        padding: 2%;
+        font-size: 120%;
+    }
+    .currency1-name .currency,
+    .currency2-name .currency {
+        width: 60%;
+        height: auto;
+        padding: 2%;
+    }
+    .currency1-name .currency .selection1,
+    .currency2-name .currency .selection2 {
+        margin: 1%;
+        padding: 1%;
+        font-size: 100%;
+        width: 160%;
+        height: 50px;
+        border: 1px solid;
+        border-radius: 10px;
+        color: rgba(38, 38, 38, 1);
+    }
+    .arrow {
+        display: none;
+    }
+    .amount-name .amount .inpute {
+        padding: 3%;
+        font-size: 150%;
+        width: 90%;
+        height: 30px;
+        border: 1px solid;
+        border-radius: 10px;
+        color: rgba(38, 38, 38, .7);
+    }
+    .currency option {
+        width: auto;
+        font-size: 70%;
+        color: #262626;
+    }
+    .buttonSubmit {
+        margin-left: 2%;
+        height: auto;
+        width: 80%;
+        padding-top: 2%;
+        padding-right: 1%;
+        padding-bottom: 1%;
+        padding-left: 2%;
+    }
+    .buttonSubmit input {
+        padding-bottom: 2%;
+        width: 95%;
+        height: 50px;
+        text-decoration: none;
+        background-color: rgba(255, 127, 39, .7);
+        color: white;
+        border: 0px solid;
+        border-radius: 10px;
+        font-size: 150%;
+    }
+    .trust {
+        margin-left: 8%;
+    }
+}

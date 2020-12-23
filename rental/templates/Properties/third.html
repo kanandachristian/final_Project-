@@ -1,0 +1,209 @@
+{% extends 'Properties/home_page.html' %} {% load static %} {% block title %} {% if properties %}{{ properties.name }}{% else %}Properties{% endif %} {% endblock %} {% block content %}
+<div class="container-fluid py-1 container-third">
+    <div class="semicontainer">
+        <div class="container-left">
+            <div class="header-title">{{properties.name}}</div>
+            <div class="house-container">
+                <div class="profil"><img class="image-fluide image-profil" src="{% if properties.image %}{{ properties.image.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" alt="">
+                </div>
+                <div class="detail-pic">
+                    {% for i in detailImages %}
+                    <div class="detail-img">
+                        <img src="{% if i.images %}{{ i.images.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" alt="">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="detail-overview">
+                <div class="card">
+                    <div class="card-header">Property Overview</div>
+                    <div class="card-body card-overview">
+                        <div class="right">
+                            <div><span>Category: </span>{{properties.category}}</div>
+                            <div><span>Type : </span>{{properties.Advert_type}}</div>
+                            <div><span>Price: </span>${{properties.property_price}}</div>
+                            <div><span>Bedroom: </span>{{properties.Bedroom}}</div>
+                            <div><span>Bathroom: </span>{{properties.Bathroom}}</div>
+                        </div>
+                        <div class="left">
+                            <div><span>Sector: </span>{{properties.sector}}</div>
+                            <div><span>Cell: </span>{{properties.cell}}</div>
+                            <div><span>Village: </span>{{properties.village}}</div>
+                            <div><span>Number: </span>{{properties.number}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header ">Property Description</div>
+                    <div class="card-body ">
+                        <p>{{properties.description|linebreaks }}</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Contact the company</div>
+                    <div class="card-body contact">
+                        <div><span class="fa fa-phone">&nbsp; +250782505763</span></div>
+                        <div><span class="fa fa-whatsapp">&nbsp; +250780530646</span> </div>
+                        <div><span class="fa fa-envelope">&nbsp; houserental@gmail.com</span></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header ">Property Location by Map</div>
+                    <div class="card-body map">
+                        <img class="image-fluide" src="{% static 'img/oip.jpg'%}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-right">
+            <div class="card card-card">
+                <div class="card-header card-b-header">Book The Property Here</div>
+                <div class="card-body card-book">
+                    <form id="book_form" method="POST">
+                        {% csrf_token %}
+                        <div class="book">
+                            <label for="">Which kind of Client are You?<Span>*</Span></label><br>
+                            <select style="padding: 1.5%;" class="inp" required name="kind" id="kind">
+                                <option value="2">company/agency</option>
+                                <option value="1">individual</option>
+                            </select>
+                        </div>
+                        <div class="book">
+                            <label id="name" for="">Your Name</label><br>
+                            <input required name="name" id="name" class="inp" type="text">
+                        </div>
+                        <div class="book">
+                            <label for="">Your Id/Passport number</label><br>
+                            <input required name="idnumber" id="idnumber" class="inp" type="text">
+                        </div>
+                        <div class="book">
+                            <label for="">Your Phone number</label><br>
+                            <input required name="phone" id="phone" class="inp" type="text">
+                        </div>
+                        <div class="book">
+                            <label for="">Your Email</label><br>
+                            <input required name="email" id="email" class="inp" type="email">
+                        </div>
+                        <div class="book">
+                            <label for="">Property id</label><br>
+                            <input name="proId" id="proId" class="inp" type="text" value="{{properties.slug}}">
+                        </div>
+                        <!-- <input class="btn-submit modal-btn" type="submit" value="Book"> -->
+                        <button class="btn-submit modal-btn" type="submit">Book</button>
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header ">You may be interrested</div>
+                <div class="card-body">
+                    {% for property in allproperties %}
+                    <div class="card-body-slide ">
+                        <div class="card-header off">{{ property.name|truncatechars:50 }}</div>
+                        <img class="image-fluide image-detail" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt="">
+                    </div>
+                    {% endfor %}
+                </div>
+                <a class="pre" onclick="plusIndex(-1)">&#10094;</a>
+                <a class="nex" onclick="plusIndex(+1)">&#10095;</a>
+            </div>
+
+            <div class="card">
+                <div class="card-header ">Do you have any Additional information ?<br>Let Have a Chat here</div>
+                <div class="card-body card-chat">
+                </div>
+            </div>
+            <div style="position: relative; padding-left:7% ;">
+                <img class="image-fluide" src="https://jirbucket.s3.eu-central-1.amazonaws.com/banners/HiR/14-min.gif" style="max-width: 100%;">
+                <img class="image-fluide" alt="" src="https://jirbucket.s3.eu-central-1.amazonaws.com/banners/HiR/Auction/Auction_Visits_.gif" style="max-width: 100%;" data-pagespeed-url-hash="2897960504" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+
+            </div>
+        </div>
+    </div>
+    <div class="card modal-bg">
+        <div class="modal shadow p-2">
+            <form action="">
+                <h4>Please Register first</h4>
+                <label for="">Name</label><br>
+                <input class="modal-input" type="text" name="" id=""><br>
+                <label for="">Username</label><br>
+                <input class="modal-input" type="text"><br>
+                <label for="">Email</label><br>
+                <input class="modal-input" type="text"><br>
+                <label for="">Password</label><br>
+                <input class="modal-input" type="text"><br>
+                <button class="btn submit" type="submit">Save</button><br>
+                <span class="modal-closer">X</span>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/static/js/jquery-2.2.4.min.js"></script>
+
+<script>
+    $(document).on('submit', '#book_form', function(e) {
+        $.ajax({
+            type: 'POST',
+            url: '{% url "rental:book" %}',
+            data: {
+                kind: $('#kind').val(),
+                name: $('#name').val(),
+                id: $('#id').val(),
+                phone: $('#phone').val(),
+                email: $('#email').val(),
+                proId: $('#proId').val(),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                action: 'post'
+            },
+            success: function() {
+                alert("Order sended successfully");
+            },
+            error: function(xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    var slideIndex = 1;
+    var modalbtn = document.querySelector('.modal-btn');
+    var modalbg = document.querySelector('.modal-bg');
+    var modalcloser = document.querySelector('.modal-closer');
+
+    modalbtn.addEventListener('click', function() {
+        modalbg.classList.add('bg-active');
+    });
+    modalcloser.addEventListener('click', function() {
+        modalbg.classList.remove('bg-active');
+    });
+
+    showImage(slideIndex);
+
+    function plusIndex(n) {
+        showImage(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showImage(slideIndex = n);
+    }
+
+    function showImage(n) {
+        var slide = document.getElementsByClassName("card-body-slide");
+
+        if (n > slide.length) {
+            slideIndex = 1
+        };
+        if (n < 1) {
+            slideIndex = slide.length
+        };
+
+        for (var i = 0; i < slide.length; i++) {
+            slide[i].style.display = "none";
+        };
+        slide[slideIndex - 1].style.display = "block";
+    }
+</script>
+
+{% endblock %}

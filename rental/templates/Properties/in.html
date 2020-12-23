@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-body">
+                    <h3>chris</h3>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus at laudantium reprehenderit
+                        amet
+                        culpa cumque voluptatem dolorum hic, enim ut vel velit facere laborum! Adipisci ab reiciendis
+                        possimus odio accusamus!
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-body shadow">
+                    <h3>chris</h3>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus at laudantium reprehenderit
+                        amet
+                        culpa cumque voluptatem dolorum hic, enim ut vel velit facere laborum! Adipisci ab reiciendis
+                        possimus odio accusamus!
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-body">
+                    <h3>chris</h3>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus at laudantium reprehenderit
+                        amet
+                        culpa cumque voluptatem dolorum hic, enim ut vel velit facere laborum! Adipisci ab reiciendis
+                        possimus odio accusamus!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- {% for property in properties %}
+            <div class="cool col-md-4">
+                <div class="card-body shadow">
+                    <img class="image-fluide image-detail"
+                        src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}"
+                        alt="">
+                    <a class="link-link" href="{{ property.get_absolute_url }}">
+                        <div class="co-block-type">
+                            <div class="price"><span>$</span>{% if property.property_price %} <span>$</span>
+                                {{ property.property_price}}
+                                {% else %}
+                                Negociable {% endif %} </div>
+                            <div class="advert">{% if property.category %} {{ property.category}}
+                                {% else %}
+                                Publicity {% endif %}</div>
+                        </div>
+                        <h3 class="property">{% if property.Advert_type %} {{ property.Advert_type}}
+                            {% else %}
+                            Publicity {% endif %}</h3>
+                        <p>
+                            <i class="fa fa-map-marker"> {{ property.sector|title}} |</i>
+                            <span> {{ property.cell|title}} |</span>
+                            <span> {{ property.village|title}}</span><br>
+                            <span>{% if property.description %} {{ property.description|truncatechars:40 }}
+                                {% else %}
+                                It's a good property in {{ property.category}} ever seen
+                                {% endif %}</span><br>
+                            {% if property.Bedroom %}
+                            <i class="fa fa-bed i-d">
+                                {{ property.Bedroom}}&nbsp;&nbsp;
+                            </i>{% endif %}{% if property.Bathroom %}<i class="fa fa-bath i-d">{{ property.Bathroom}}
+                            </i>{% endif %}
+                        </p>
+                    </a>
+                </div>
+            </div>
+            {% endfor %} -->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

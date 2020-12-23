@@ -1,0 +1,142 @@
+.landlord-post {
+    min-height: 100%;
+    padding-left: 5%;
+    position: relative;
+}
+
+#myP {
+    position: relative;
+    display: none;
+}
+
+.myP select {
+    width: 60%;
+}
+
+.fill {
+    width: 70%;
+    margin-top: 2%;
+    background-color: rgb(238, 232, 232);
+    font-size: 120%;
+    padding: 2%;
+    border-radius: 6px;
+    color: darkslategrey;
+}
+
+.first-blog {
+    width: 100%;
+    height: auto;
+    padding: 2%;
+}
+
+.ll-info {
+    font-size: 180%;
+    font-weight: bolder;
+    color: darkslategrey;
+}
+
+.ll-kind {
+    font-size: 120%;
+    color: rgb(134, 71, 71);
+}
+
+label {
+    font-size: 120%;
+    color: rgb(21, 39, 39);
+    margin-top: 1%;
+    font-weight: bold;
+}
+
+label span {
+    font-weight: bolder;
+    font-size: 110%;
+    color: rgb(230, 0, 0);
+}
+
+.radio {
+    font-size: 110%;
+    color: #000;
+    font-weight: normal;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='tel'] {
+    width: 60%;
+    padding: 0.5% 2% 0.5% 2%;
+    border: solid 1px rgb(15, 179, 179);
+    border-radius: 4px;
+}
+
+select {
+    width: 60%;
+    padding: 0.5% 2% 0.5% 2%;
+    border: solid 1px rgb(15, 179, 179);
+    border-radius: 4px;
+}
+
+.second-blog {
+    width: 100%;
+    height: auto;
+    margin-top: 1%;
+}
+
+.card-second {
+    width: 70%;
+}
+
+.third-blog {
+    width: 100%;
+    height: 300px;
+    margin-top: 1%;
+    height: auto;
+    position: relative;
+}
+
+.fourth-blog {
+    width: 100%;
+    height: 300px;
+    margin-top: 1%;
+    height: auto;
+    position: relative;
+}
+
+.fith-blog {
+    width: 100%;
+    height: 300px;
+    margin-top: 1%;
+    height: auto;
+    position: relative;
+}
+
+.card-images {
+    width: 80%;
+    margin: 0px 2% 2% 2%;
+    border: solid 1px #ccc;
+}
+
+.file-upload {
+    width: 75%;
+    padding: 1%;
+    box-shadow: black 1px;
+    border: solid 1px rgb(110, 105, 105);
+}
+
+.profil-info {
+    color: rgb(180, 176, 176);
+    font-size: 100%;
+}
+
+.sixth-blog {
+    width: 100%;
+    height: 300px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    height: auto;
+}
+
+.btn-save {
+    width: 10%;
+    height: 40px;
+    margin-bottom: 1%;
+}

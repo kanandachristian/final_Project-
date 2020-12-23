@@ -1,0 +1,167 @@
+{% extends 'Properties/home_page.html' %} {% load static %} {% block title %} {% if category %}{{ category.name|title }}{% else %}Properties{% endif %} {% endblock %} {% block content %}
+<div class="find-out">Find out <span style="color: rgba(233, 148, 92,1);">{% if category %}{{ category.name }}{% else %}Availabe{% endif %}</span> houses, apartments, offices and all properties that interest you</div>
+<!-- <div class="container-wraper">
+    <div class="page-wrapper">
+
+        <div class="post-slider">
+            <i class="fa fa-chevron-left prev"></i>
+            <i class="fa fa-chevron-right next"></i>
+            <div class="post-wrapper">
+                {% for property in result %}
+                <div class="card post shadow p-3">
+                    <img src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt="Picture" class="image-fluide slider-image">
+                    <div class="post-infos">
+                        <a class="link-link" href="{{ property.get_absolute_url }}">
+                            <div class="co-block-type">
+                                <div class="co-apartment">{% if property.Advert_type %} {{ property.Advert_type}} {% else %} Publicity {% endif %}</div>
+                                <div class="co-rent">{% if property.category %} {{ property.category}} {% else %} Publicity {% endif %}</div>
+                            </div>
+                            <div class="co-price">
+                                <span>{{ property.currency|truncatechars:10}}</span>{% if property.property_price %} {{ property.property_price }} {% else %} Negociable {% endif %}<span>/month</span></div>
+                            <i class="fa fa-map-marker"> {{ property.sector}} |</i>
+                            <span> {{ property.cell}} |</span>
+                            <span> {{ property.village}}</span><br>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="body">
+    <div class="col-md-11 container-detail">
+        {% block pagination %}
+        <div class="row">
+            <div class="col-md-10">
+                <div class="row">
+                    {% if result %} {% for property in result %}
+                    <div class="cool col-md-4">
+                        <div class="card card-body ca shadow">
+                            <img class="image-fluide image-detail" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt="">
+                            <a class="link-link" href="{{ property.get_absolute_url }}">
+                                <div class="co-block-type">
+                                    <div class="price">
+                                        <span>{{ property.currency|truncatechars:10}}</span>{% if property.property_price %} {{ property.property_price}}/ <span style="font-size: small;">{{ property.payable|truncatechars:10|title}}</span> {% else %} Negociable
+                                        {% endif %} </div>
+                                    <div class="advert">{% if property.category %} {{ property.category|title}} {% else %} Publicity {% endif %}</div>
+                                </div>
+                                <h3 class="property">{% if property.Advert_type %} {{ property.Advert_type|title}} {% else %} Publicity {% endif %}</h3>
+
+                                <h4>{{ property.name|truncatechars:20|title}}</h4>
+                                <p>
+                                    <i class="fa fa-map-marker"> {{ property.sector|title}} |</i>
+                                    <span> {{ property.cell|title}} |</span>
+                                    <span> {{ property.village|title}}</span><br>
+                                    <span>{% if property.description %} {{ property.description|truncatechars:30 }}
+                                        {% else %}
+                                        It's a good property in {{ property.category}} ever seen
+                                        {% endif %}</span><br> {% if property.Bedroom %}
+                                    <i class="fa fa-bed i-d">
+                                        {{ property.Bedroom}}&nbsp;&nbsp;
+                                    </i>{% endif %}{% if property.Bathroom %}<i class="fa fa-bath i-d">{{ property.Bathroom}}
+                                    </i>{% endif %}
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %} {% else %}
+                    <div>No property found with such Query</div><br>
+                    <div> House -- - -- - </div> <br><br>
+                    <div>Here are Other related Properties that may interest you</div><br> {% for property in values %}
+                    <div class="cool col-md-4">
+                        <div class="card card-body ca shadow">
+                            <img class="image-fluide image-detail" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt="">
+                            <a class="link-link" href="{{ property.get_absolute_url }}">
+                                <div class="co-block-type">
+                                    <div class="price">
+                                        <span>{{ property.currency|truncatechars:10}}</span>{% if property.property_price %} {{ property.property_price}}/ <span style="font-size: small;">{{ property.payable|truncatechars:10|title}}</span> {% else %} Negociable
+                                        {% endif %} </div>
+                                    <div class="advert">{% if property.category %} {{ property.category|title}} {% else %} Publicity {% endif %}</div>
+                                </div>
+                                <h3 class="property">{% if property.Advert_type %} {{ property.Advert_type|title}} {% else %} Publicity {% endif %}</h3>
+
+                                <h4>{{ property.name|truncatechars:20|title}}</h4>
+                                <p>
+                                    <i class="fa fa-map-marker"> {{ property.sector|title}} |</i>
+                                    <span> {{ property.cell|title}} |</span>
+                                    <span> {{ property.village|title}}</span><br>
+                                    <span>{% if property.description %} {{ property.description|truncatechars:30 }}
+                                        {% else %}
+                                        It's a good property in {{ property.category}} ever seen
+                                        {% endif %}</span><br> {% if property.Bedroom %}
+                                    <i class="fa fa-bed i-d">
+                                        {{ property.Bedroom}}&nbsp;&nbsp;
+                                    </i>{% endif %}{% if property.Bathroom %}<i class="fa fa-bath i-d">{{ property.Bathroom}}
+                                    </i>{% endif %}
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %} {% endif %}
+                </div>
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-sm-12 aside-detail p-0">
+                <div class="card">
+                    <div class="card-header ">Discover Other Properties</div>
+                    <div class="card-body">
+                        {% for property in properties %}
+                        <div class="card-body-slide">
+                            <a href="{{property.get_absolute_url}}">
+                                <div class="card-header off">{{ property.name|truncatechars:12 }}</div>
+                                <img class="image-fluide image-detail" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt="">
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <a class="preve" onclick="plusIndex(-1)">&#10094;</a>
+                    <a class="nexe" onclick="plusIndex(+1)">&#10095;</a>
+                </div>
+                <div style="position: relative;">
+                    <img class="image-fluide" src="https://jirbucket.s3.eu-central-1.amazonaws.com/banners/HiR/14-min.gif" style="max-width: 100%;">
+
+                </div>
+            </div>
+        </div>
+        {% endblock pagination%} {% if values %}
+        <div class="pagination">
+            {% if values.has_previous %}
+            <a href="{{values.get_absolute_url}}?page={{values.previous_page_number}}">
+                << Prev</a>
+                    {% endif %} {% if values.has_next %}
+                    <a href="{{values.get_absolute_url}}?page={{values.next_page_number}}">Nex >> </a> {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script type="text/javascript">
+    var slideIndex = 1;
+    showImage(slideIndex);
+
+    function plusIndex(n) {
+        showImage(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showImage(slideIndex = n);
+    }
+
+    function showImage(n) {
+        var slide = document.getElementsByClassName("card-body-slide");
+
+        if (n > slide.length) {
+            slideIndex = 1
+        };
+        if (n < 1) {
+            slideIndex = slide.length
+        };
+
+        for (var i = 0; i < slide.length; i++) {
+            slide[i].style.display = "none";
+        };
+        slide[slideIndex - 1].style.display = "block";
+    }
+</script>
+{% endblock content %}

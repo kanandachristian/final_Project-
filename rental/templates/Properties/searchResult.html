@@ -1,0 +1,79 @@
+{% extends 'Properties/home_page.html' %} {% load static %} {% block title %} {% if category %}{{ category.name|title }}{% else %}Properties{% endif %} {% endblock %} {% block content %}
+<div class="all-searchResult">
+    {% if result %}
+    <div class="infor-result">
+        <span class="result">Result of:</span>
+        <div class="is-property"><span>{% if prop %} <strong>{{prop|title}}</strong>{% else %} Any Property type {% endif %} for </span><span>{% if cat %} <strong>{{cat}}</strong>{% else %} Any Category {% endif %}  in </span> <span> {% if place %} <strong>{{place}}</strong>{% else %} Any Place {% endif %} </span>            with <span>{% if bed %} {{bed}} Rooms {% else %} Any number of Room {% endif %}</span></div>
+    </div>
+    <div class="row searchResult">
+        <div class="col-md-12">
+            <div class="row bordere">
+                {% for property in result %}
+                <div class="col-md-3 properties-result">
+                    <div class="card carde">
+                        <div class="image-position">
+                            <a href="{{ property.get_absolute_url }}"><img class="image-fluide" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt=""></a>
+                            <div class="prix">{{ property.currency|truncatechars:10}} {% if property.property_price %} {{ property.property_price}} <span style="font-size: small;">/{{ property.payable|truncatechars:10|title}}</span>{% endif %}</div>
+                        </div>
+                        <div class="informations">
+                            <a class="link" href="{{ property.get_absolute_url }}">
+                                <div class="about-rent"><span class="s1">{% if property.Advert_type %} {{ property.Advert_type|title}} {% else %} Publicity {% endif %}</span><span class="s2">{% if property.category %} {{ property.category|title}} {% else %} Publicity {% endif %}</span></div>
+                                <div class="title">{{ property.name|truncatechars:20|title}}</div>
+                                <div>{% if property.description %} {{ property.description|truncatewords:10 }} {% else %} It's a good property in {{ property.category}} ever seen {% endif %}</div>
+                                <div class="property-address"><i class="fa fa-map-marker"></i>&nbsp;<span>{{ property.sector|title}}|</span><span>{{ property.cell|title}} |</span> <span>{{ property.village|title}}</span></div>
+                                <div class="bed-bath"><i class="fa fa-bed i-d">
+                                    {{ property.Bedroom}}&nbsp;&nbsp;
+                                </i>{% if property.Bathroom %}<i class="fa fa-bath i-d">{{ property.Bathroom}}
+                                </i>{% endif %}</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+    {% else %}
+    <div class="infor-result">
+        <span class="result">No property found with such query:</span>
+        <div class="no-property"><span>{% if prop %} <strong>{{prop|title}}</strong>{% else %} Any Property type {% endif %} for </span><span>{% if cat %} <strong>{{cat}}</strong>{% else %} Any Category {% endif %}  in </span> <span> {% if place %} <strong>{{place}}</strong>{% else %} Any Place {% endif %} </span>            with <span>{% if bed %} <strong>{{bed}}</strong> Rooms {% else %} Any number of Room {% endif %}</span></div>
+    </div>
+    {% endif %}
+    <div class="info-propose">
+        <span>Visit here down a List of both rental and selling  properties that may interest you! </span>
+    </div>
+    <div class="row searchResult">
+        <div class="col-md-12">
+            <div style="padding-top: 2%;" class="row ">
+                {% for property in values %}
+                <div class="col-md-3 properties-result">
+                    <div class="card carde">
+                        <div class="image-position">
+                            <a href="{{ property.get_absolute_url }}"><img class="image-fluide" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt=""></a>
+                            <div class="prix">{{ property.currency|truncatechars:10}} {% if property.property_price %} {{ property.property_price}} <span style="font-size: small;">/{{ property.payable|truncatechars:10|title}}</span>{% endif %}</div>
+                        </div>
+                        <div class="informations">
+                            <a class="link" href="{{ property.get_absolute_url }}">
+                                <div class="about-rent"><span class="s1">{% if property.Advert_type %} {{ property.Advert_type|title}} {% else %} Publicity {% endif %}</span><span class="s2">{% if property.category %} {{ property.category|title}} {% else %} Publicity {% endif %}</span></div>
+                                <div class="title">{{ property.name|truncatechars:20|title}}</div>
+                                <div>{% if property.description %} {{ property.description|truncatewords:10 }} {% else %} It's a good property in {{ property.category}} ever seen {% endif %}</div>
+                                <div class="property-address"><i class="fa fa-map-marker"></i>&nbsp;<span>{{ property.sector|title}}|</span><span>{{ property.cell|title}} |</span> <span>{{ property.village|title}}</span></div>
+                                <div class="bed-bath"><i class="fa fa-bed i-d">
+                                    {{ property.Bedroom}}&nbsp;&nbsp;
+                                </i>{% if property.Bathroom %}<i class="fa fa-bath i-d">{{ property.Bathroom}}
+                                </i>{% endif %}</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

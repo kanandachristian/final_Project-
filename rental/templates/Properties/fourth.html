@@ -1,0 +1,127 @@
+{% extends 'Properties/home_page.html' %} {% load static %} {% block title %} {% if Advert_type %}{{ Advert_type.name|title }}{% else %}Other Properties{% endif %} {% endblock %} {% block content %}
+<div class="body">
+    <div class="container-big">
+        <div class="fourth-left">
+            <!-- <div class="fouth-title">Here are some Best Properties for sale and Rent that may interest you!</div> -->
+            <!-- carossel -->
+            <div class="container-wraper">
+                <div class="p-wrapper">
+
+                    <!-- Post Slider -->
+                    <div class="p-slider">
+                        <i class="fa fa-chevron-left prev"></i>
+                        <i class="fa fa-chevron-right next"></i>
+                        <div class="post-wrapper">
+                            {% for property in properties %}
+                            <div class="card post shadow p-3">
+                                <a style="text-decoration: none; 
+                                color: rgb(13, 105, 105);" href="{{property.get_absolute_url}}"><img src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt="Picture" class="image-fluide slider-image"> {{property.name|truncatechars:15}} </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end carossel -->
+            {% if item %} {% for property in item %}
+            <div class=" fourth-card shadow ">
+                <div class="left-pic">
+                    <a href="{{ property.get_absolute_url}}">
+                        <img class="image-fluide" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt=""></a>
+                </div>
+                <div class="right-info">
+                    <a href="{{ property.get_absolute_url}}">
+                        <h3>{{ property.name|truncatechars:20|title}}</h3>
+                    </a>
+                    <div style="padding-left: 1%;"><i class="fa fa-map-marker"> {{ property.sector|title}} |</i><span> {{ property.cell|title}} |</span><span>{{ property.village|title}}</span></div>
+                    <div class="desc">{% if property.description %} {{ property.description|truncatechars:150 }} {% else %} It's a good property in {{ property.category}} ever seen {% endif %}</div>
+                    <span class="aprice shadow">{{ property.currency|truncatechars:10}} {% if property.property_price %} {{ property.property_price}} <span style="font-size: x-small;">/{{ property.payable|truncatechars:10|title}}</span> {% else %} Negociable
+                    {% endif %} </span>
+                    <div class="advertizing"><span class="adv">{% if property.Advert_type %} {{ property.Advert_type|title}} {% else %} Publicity {% endif %}</span><span class="type">{{ property.category}}</span></div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- end carossel -->
+            {% else %} {% for property in properties %}
+            <div class=" fourth-card shadow ">
+                <div class="left-pic">
+                    <a href="{{ property.get_absolute_url}}">
+                        <img class="image-fluide" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt=""></a>
+                </div>
+                <div class="right-info">
+                    <a href="{{ property.get_absolute_url}}">
+                        <h3>{{ property.name|truncatechars:20|title}}</h3>
+                    </a>
+                    <div style="padding-left: 1%;"><i class="fa fa-map-marker"> {{ property.sector|title}} |</i><span> {{ property.cell|title}} |</span><span>{{ property.village|title}}</span></div>
+                    <div class="desc">{% if property.description %} {{ property.description|truncatechars:150 }} {% else %} It's a good property in {{ property.category}} ever seen {% endif %}</div>
+                    <span class="aprice shadow">{{ property.currency|truncatechars:10}} {% if property.property_price %} {{ property.property_price}} <span style="font-size: x-small;">/{{ property.payable|truncatechars:10|title}}</span> {% else %} Negociable
+                    {% endif %} </span>
+                    <div class="advertizing"><span class="adv">{% if property.Advert_type %} {{ property.Advert_type|title}} {% else %} Publicity {% endif %}</span><span class="type">{{ property.category}}</span></div>
+                </div>
+            </div>
+            {% endfor %}{% endif %}
+        </div>
+        <div class="fourth-right">
+            <div class="card body-card ">
+                <div class="card-header">Discover Other Properties</div>
+                <div class="card-body">
+                    {% for property in allproperties %}
+                    <div class="card-body-slide">
+                        <a href="{{property.get_absolute_url}}">
+                            <div class="card-header off">{{ property.name|truncatechars:12 }}</div>
+                            <img class=" image-detail" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt="">
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                <a class="preve" onclick="plusIndex(-1)">&#10094;</a>
+                <a class="nexe" onclick="plusIndex(+1)">&#10095;</a>
+            </div>
+            <div style="position: relative;">
+                <img class="image-fluide" src="https://jirbucket.s3.eu-central-1.amazonaws.com/banners/HiR/14-min.gif" style="max-width: 100%;">
+                <img class="image-fluide" alt="" src="https://jirbucket.s3.eu-central-1.amazonaws.com/banners/HiR/Auction/Auction_Visits_.gif" style="max-width: 100%;" data-pagespeed-url-hash="2897960504" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+
+            </div>
+        </div>
+    </div>
+    {% if item %}
+    <div class="pagination">
+        {% if item.has_previous %}
+        <a href="{{item.get_absolute_url}}?page={{item.previous_page_number}}">
+            << Prev</a>
+                {% endif %} {% if item.has_next %}
+                <a href="{{item.get_absolute_url}}?page={{item.next_page_number}}">Nex >> </a> {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+<script type="text/javascript">
+    var slideIndex = 1;
+    showImage(slideIndex);
+
+    function plusIndex(n) {
+        showImage(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showImage(slideIndex = n);
+    }
+
+    function showImage(n) {
+        var slide = document.getElementsByClassName("card-body-slide");
+
+        if (n > slide.length) {
+            slideIndex = 1
+        };
+        if (n < 1) {
+            slideIndex = slide.length
+        };
+
+        for (var i = 0; i < slide.length; i++) {
+            slide[i].style.display = "none";
+        };
+        slide[slideIndex - 1].style.display = "block";
+    }
+</script>
+{% endblock %}

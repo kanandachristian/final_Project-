@@ -1,0 +1,330 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="bahizi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcuts icon" href="{% static 'img/home_page_127px.png'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home_css.css' %}">
+    <link rel="stylesheet" href="{% static 'css/body.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+    <link rel="stylesheet" href="{% static 'css/converte.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fourth.css' %}">
+    <link rel="stylesheet" href="{% static 'css/searchResult.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="{% static 'js/bootstrap.min.js'%}">
+
+    <link href="https://fonts.googleapis.com/css?family=Candal|Lora&display=swap" rel="stylesheet">
+    <!--customer styling-->
+
+
+    <title>{% block title %} Houserental {% endblock %}</title>
+</head>
+
+<body>
+    <!-- MENU -->
+    <header>
+        <div class="logo">
+            <img src="{% static 'img/home_127px.png' %}" alt="logo">
+            <div class="line"></div>
+            <h1 class="logo-text">House<span>rental</span></h1>
+        </div>
+        <i class="fa fa-bars menu-toggle"></i>
+        <ul class="nav">
+            <li><a id="form_ajax" href="{% url 'rental:home_page'%}">Home</a></li>
+            {% for c in categories %}
+            <li><a href="{{c.get_absolute_url}}">For &nbsp;{{ c.name}}
+                    <i class="fa fa-chevron-down" style="font-size: .7em;"></i></a>
+                <!-- <ul>
+                    {% for ty in types %}
+                    <li> <a href="{% url 'rental:by_type'%}">{{ty.name|title}}</a></li>
+                    {% endfor %}
+                </ul> -->
+            </li>
+            {% endfor %}
+            </li>
+            <!-- <li>
+                <a href="{% url 'rental:login'%}">
+                    <i class="fa fa-user"></i> Login
+
+                </a>
+            </li> -->
+            <li class="Post-house2">
+                <a href="#"> Request Property
+                </a>
+            </li>
+            <li class="Post-house">
+                <a href="{% url 'rental:post_property'%}">
+                    Post Your Property
+                </a>
+            </li>
+            <li>
+                <a class="converter" href="{% url 'conversion:conv1' %}">Currency Converter</a>
+            </li>
+        </ul>
+    </header>
+    <!-- END MENU -->
+    {% block content %}
+    <!-- HOME -->
+    <div class="home-container">
+        <div class="post-slider">
+
+            <!-- App Info -->
+            <div class="info-container">
+                <div class="h1">
+                    <img src="{% static 'img/home_127px.png' %}" alt="">
+                    <span>Houserental</span></div>
+                <div class="h2">WELCOME, FEEL FREE</div>
+                <div class="h3">AND CHOOSE THE BEST PROPERTY EVER</div>
+                <div class="h4">This plateform helps you Rent, buy and sell house or any immovable</div>
+                <div class="location">
+                    <div> Find &nbsp
+                        <a href="#" style="color: rgb(238, 144, 81,1);"> Rental houses </a> &nbsp by Map location
+                    </div>
+                    <i class="fa fa-map-marker"></i>
+                </div>
+            </div>
+            <!-- End App Info -->
+            <!-- Quick search -->
+            <div class="oneside_right">
+                <div class="all_search_content">
+                    <div class="first-title">I am looking for </div>
+                    <form class="searchForm" action="{% url 'rental:search'%}">
+                        {% csrf_token %}
+                        <div class="search_content-1">
+                            <div class="content_ser">
+                                <label for="">Type</label>
+                                <div class="control">
+                                    <select required value="categorization" name="categorization" id="categorization">
+                                        <option selected disabled value="">e.g Rent</option>
+                                        {% for c in categories %}
+                                        <option value="{{c.id}}" >{{c.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search_content-1">
+                            <div class="content_ser">
+                                <label for="">Property</label>
+                                <div class="control">
+                                    <select required value="adverttype" name="adverttype" id="adverttype">
+                                            <option selected disabled value="">e.g house</option>
+                                        {% for property in properties %}
+                                        <option value="{{property.Advert_type}}" name="{{property.Advert_type}}">{{property.Advert_type}}</option>
+                                        <!-- <option value="house" name="house">House</option>
+                                        <option value="office" name="office">Office</option>
+                                        <option value="shop" name="shop">shop hall</option> -->
+                                        {% endfor  %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search_content-2">
+                            <div class="content_ser">
+                                <label for="">Place</label>
+                                <div class="control">
+                                    <select value="place" name="place" id="place">
+                                        <option selected disabled value="">e.g Makoro</option>
+                                        <option value="Gisenyi">Gisenyi</option>
+                                        <option value="Bugangari">Bugangari</option>
+                                        <option value="Mahoko">Mahoko</option>
+                                        <option value="RCD">RCD</option>
+                                        <option value="Petite barriere">plage</option>
+                                        <option value="plage">Lac</option>
+                                        <option value="ville">Ville</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search_content-3">
+                            <div class="content_ser">
+                                <label for="">Room</label>
+                                <div class="control">
+                                    <select value="room" name="room" id="x" value="room">
+                                        <option selected disabled value="">e.g 1 Room</option>
+                                        <option value="1">1 Room</option>
+                                        <option value="2">2 Rooms</option>
+                                        <option value="3">3 Rooms</option>
+                                        <option value="4">4 Rooms</option>
+                                        <option value="5">5 Rooms</option>
+                                        <option value="6">6 Rooms</option>
+                                        <option value="7">7 Rooms</option>
+                                        <option value="8">8 Rooms</option>
+                                        <option value="9">9 Rooms</option>
+                                        <option value="more">More than 9 Rooms</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search_content-4">
+                            <div class="content_ser">
+                                <label for="">Price</label>
+                                <div class="control">
+                                    <select value="price" name="price" id="" value="price">
+                                        <option selected disabled value="">e.g 100k-500k</option>
+                                        <option value="10000">Less than 10k</option>
+                                        <option value="50000">10k-50k</option>
+                                        <option value="100000">50k-100k</option>
+                                        <option value="500000">100k-500k</option>
+                                        <option value="1000000">500k-1M</option>
+                                        <option value="1000000">More than 1000M</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search_content-6">
+                            <div class="content_ser">
+                                <input class="sub" type="submit" value="Submit">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End Quick Search -->
+        </div>
+    </div>
+    <!-- END HOME -->
+    <div class="all-body">
+        {% for c in categories %}
+        <div class="rent-link">
+            <div><a href="{{ c.get_absolute_url }}">Best Properties for {{ c.name }}<br>
+                    <span>Find them Now</span></a></div>
+        </div>
+        {% endfor %}
+        <div class="other-link">
+            <div><a href="{% url 'rental:by_type'%}">Any other Properties<br><span>Read more</span></a></div>
+        </div>
+    </div>
+    <!-- second-body -->
+    <div class="container-fluid py-2">
+        <div class="row justify-content-center">
+            <div class="col-md-11">
+                {% block pagination %}
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 ">
+                        <div class="row">
+                            {% for property in items %}
+                            <div class="col-md-4 p-1">
+                                <div class="card card-body shadow carte">
+                                    <img class="image-fluide image-pic" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt="Photo">
+                                    <div class="co-block-type">
+                                        <div class="price">{% if property.property_price %}
+                                            <span>{{ property.currency|truncatechars:10}}</span> {{ property.property_price}}/ <span style="font-size: small;">{{ property.payable|truncatechars:10|title}}</span> {% else %} Negociable {% endif %}</div>
+                                        <div class="advert">{% if property.category %} {{ property.category|title}} {% else %} Publicity {% endif %}</div>
+                                    </div>
+                                    <h3 class="property">{% if property.Advert_type %} {{ property.Advert_type|title}} {% else %} Publicity {% endif %}</h3>
+                                    <h4>{{ property.name|truncatechars:30}}</h4>
+                                    <p class="description">
+                                        <i class="fa fa-map-marker"> {{ property.sector|title}} |</i>
+                                        <span> {{ property.cell|title}} |</span>
+                                        <span> {{ property.village|title}}</span><br>
+                                        <span>{% if property.description %} {{ property.description|truncatechars:100 }}
+                                            {% else %}
+                                            It's a good property in {{ property.category|title}} ever seen
+                                            {% endif %}</span><br> {% if property.Bedroom %}
+                                        <i class="fa fa-bed i-d">
+                                            {{ property.Bedroom}}&nbsp;&nbsp;
+                                        </i>{% endif %} {% if property.Bathroom %}<i class="fa fa-bath i-d"> {{ property.Bathroom}}
+                                        </i>{% endif %}
+                                    </p>
+                                    <div class="absolute_url">
+                                        <a href="{{ property.get_absolute_url }}">View</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endblock pagination %} {% endblock %} {% if items %}
+                <div class="pagination">
+                    {% if items.has_previous %}
+                    <a href="{% url 'rental:home_page'%}?page={{items.previous_page_number}}">
+                        << Prev</a>
+                            {% endif %} {% if items.has_next %}
+                            <a href="{% url 'rental:home_page'%}?page={{items.next_page_number}}">Nex >> </a> {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- // footer -->
+    <div class="footer">
+
+        <div class="footer-content">
+
+            <div class="footer-section about">
+                <h1 class="logo-text"><span>House</span>rental</h1>
+                <p class="short-info">
+                    We're Houserental.com; we dwell in Rwanda/rubavu managing renting and selling houses of Rubavu and any other city in Rwanda.
+                </p>
+                <div class="contact">
+                    <span><i class="fa fa-phone"></i> &nbsp; 250-782-505-763</span>
+                    <span><i class="fa fa-envelope"></i> &nbsp; houserental@gmail.com</span>
+                </div>
+                <div class="social">
+                    <a class="a" href="#"><i class="fa fa-facebook"></i></a>
+                    <a class="a" href="#"><i class="fa fa-instagram"></i></a>
+                    <a class="a" href="#"><i class="fa fa-twitter"></i></a>
+                    <a class="a" href="#"><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section links">
+                <h2>Quick Links</h2><br>
+                <ul>
+                    <a href="{% url 'rental:home_page'%}">
+                        <li>Home</li>
+                    </a>
+                    {% for c in categories %}
+                    <a href="{{c.get_absolute_url}}">
+                        <li>{{c.name}} properties</li>
+                    </a>
+                    {% endfor %}
+                    <a href="">
+                        <li>Other Properties</li>
+                    </a>
+                    <a href="{% url 'rental:register'%}">
+                        <li>Sign up for newsletter</li>
+                    </a>
+                </ul>
+            </div>
+
+            <div class="footer-section contact-form">
+                <h2>Contact us </h2><br>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="email" name="email" class="text-input contact-input" placeholder="Your email address..." required>
+                    <textarea rows="4" name="message" class="text-input contact-input" placeholder="Your message..." required></textarea>
+                    <button type="submit" class="btn btn-big contact-btn">
+                        <i class="fa fa-envelope"></i>
+                        Send
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; houserental.com | Designed by Genius
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
+    <script type="text/javascript" src="{% static 'js/carousel.js'%}"></script>
+
+    <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
+</body>
+
+</html>

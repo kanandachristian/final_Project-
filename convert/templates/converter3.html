@@ -1,0 +1,12 @@
+{% extends 'converter.html'%}
+{% load static %}
+        {% block converted %}
+        <div class="output-content">
+          <div class="amount1"><strong>{{total.am}}</strong> <span>RWF</span> <span>=</span></div>
+          <div class="amount2"> <strong>{{total.value}}</strong> <span style="font-size: 100%;">USD</span> </div>
+        </div>
+        <div class="output-content2">
+          <div class="amount3"><strong>1</strong> <span>RWF</span> <span>=</span> <strong>{{total.y}}</strong> <span>USD</span> </div>
+          <div class="amount4"> <strong>1</strong> <span>USD</span> <span>=</span> <strong>{{total.x}}</strong> <span>RWF</span> </div>
+        </div>
+        {% endblock %}

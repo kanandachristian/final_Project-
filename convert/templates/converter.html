@@ -1,0 +1,51 @@
+{% extends 'Properties/home_page.html' %} {% load static %} {% block content %}
+
+<section class="page-content2">
+    <div class="currency-content">
+
+        <!-- currency-field -->
+        <div class="currency-title">CURRENCY CONVERTER</div>
+
+        <form class="converterForm" action="{% url 'conversion:conv2' %}">
+            {% csrf_token %}
+            <div class="currency-field">
+                <div class="amount-name">
+                    <div class="name">Amount</div>
+                    <div class="amount">
+                        <input class="inpute" type="text" name="montant" value="1" pattern="[0-9.]+" required="required">
+                    </div>
+                </div>
+                <div class="currency1-name">
+                    <div class="name">From</div>
+                    <div class="currency">
+                        <select class="selection1" name="selection1">
+              <option value=1 name="USD"><a href="#">USD</a></option>
+              <option value=2 name="RWF"><a href="#">RWF</a></option>
+              <option value=3 name="FC"><a href="#">FC</a></option>
+            </select>
+                    </div>
+                </div>
+                <div class="arrow">
+                    <a href="#"> ↔ </a>
+                </div>
+                <div class="currency2-name">
+                    <div class="name">To</div>
+                    <div class="currency">
+                        <select class="selection2" name="selection2">
+                        <option value=2 name="RWF"><a href="#">RWF</a></option>
+                        <option value=3 name="FC"><a href="#">FC</a></option>
+                        <option value=1 name="USD"><a href="#">USD</a></option>
+                      </select>
+                    </div>
+                </div>
+                <div class="buttonSubmit">
+                    <!-- <input class="btn" type="submit" name="converting" value=" > "> -->
+                    <button type="submit" class="btn btn-md p-1 buton"> > </button>
+                </div>
+            </div>
+        </form>
+        {% block converted %}
+        <div class=" trust ">The trusted currency converter</div>
+        {% endblock %}
+</section>
+{% endblock %}
