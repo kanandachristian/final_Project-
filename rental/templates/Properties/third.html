@@ -110,11 +110,11 @@
                 <a class="nex" onclick="plusIndex(+1)">&#10095;</a>
             </div>
 
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card-header ">Do you have any Additional information ?<br>Let Have a Chat here</div>
                 <div class="card-body card-chat">
                 </div>
-            </div>
+            </div> -->
             <div style="position: relative; padding-left:7% ;">
                 <img class="image-fluide" src="https://jirbucket.s3.eu-central-1.amazonaws.com/banners/HiR/14-min.gif" style="max-width: 100%;">
                 <img class="image-fluide" alt="" src="https://jirbucket.s3.eu-central-1.amazonaws.com/banners/HiR/Auction/Auction_Visits_.gif" style="max-width: 100%;" data-pagespeed-url-hash="2897960504" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
@@ -124,16 +124,17 @@
     </div>
     <div class="card modal-bg">
         <div class="modal shadow p-2">
-            <form action="">
+            <form action="{% url 'rental:register'%}" method="POST">
+                {% csrf_token %}
                 <h4>Please Register first</h4>
                 <label for="">Name</label><br>
-                <input class="modal-input" type="text" name="" id=""><br>
+                <input name="name" class="modal-input" type="text" id=""><br>
                 <label for="">Username</label><br>
-                <input class="modal-input" type="text"><br>
+                <input name="username" class="modal-input" type="text"><br>
                 <label for="">Email</label><br>
-                <input class="modal-input" type="text"><br>
+                <input name="email" class="modal-input" type="text"><br>
                 <label for="">Password</label><br>
-                <input class="modal-input" type="text"><br>
+                <input name="password" class="modal-input" type="text"><br>
                 <button class="btn submit" type="submit">Save</button><br>
                 <span class="modal-closer">X</span>
             </form>

@@ -1,4 +1,4 @@
-{% load static  %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
     <link rel="stylesheet" href="{% static 'js/bootstrap.min.js'%}">
@@ -23,13 +22,18 @@
 
 <body>
     <div class="auth-content">
-        <form action="register.html" method="post">
+        <form action="{% url 'rental:register'%}" method="POST">
             {% csrf_token %}
             <h2 class="form-title">Register</h2>
 
-            
+
             <div class="msg error">
                 <li>Username required</li>
+            </div>
+
+            <div>
+                <label for="">Name</label>
+                <input type="text" name="name" class="text-input">
             </div>
 
             <div>
@@ -42,11 +46,11 @@
             </div>
             <div>
                 <label for="">Password</label>
-                <input type="password" name="password" class="text-input">
+                <input type="password" name="password-verf" class="text-input">
             </div>
             <div>
                 <label for="">Password Confirmation</label>
-                <input type="password" name="passwordConf" class="text-input">
+                <input type="password" name="password" class="text-input">
             </div>
             <div>
                 <button type="submit" class="btn btn-big">Register</button>
