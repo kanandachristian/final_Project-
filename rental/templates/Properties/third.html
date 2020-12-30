@@ -19,9 +19,9 @@
                     <div class="card-header">Property Overview</div>
                     <div class="card-body card-overview">
                         <div class="right">
-                            <div><span>Category: </span>{{properties.category}}</div>
+                            <div><span>Category: </span>{{properties.category|title}}</div>
                             <div><span>Type : </span>{{properties.Advert_type}}</div>
-                            <div><span>Price: </span>${{properties.property_price}}</div>
+                            <div><span>Price: </span>{{ properties.currency|truncatechars:10}} {{properties.property_price}}</div>
                             <div><span>Bedroom: </span>{{properties.Bedroom}}</div>
                             <div><span>Bathroom: </span>{{properties.Bathroom}}</div>
                         </div>
@@ -101,8 +101,9 @@
                 <div class="card-body">
                     {% for property in allproperties %}
                     <div class="card-body-slide ">
-                        <div class="card-header off">{{ property.name|truncatechars:50 }}</div>
-                        <img class="image-fluide image-detail" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt="">
+                        <a href="">
+                            <div class="card-header off">{{ property.name|truncatechars:50 }}</div>
+                            <img class="image-fluide image-detail" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt=""></a>
                     </div>
                     {% endfor %}
                 </div>
@@ -128,13 +129,13 @@
                 {% csrf_token %}
                 <h4>Please Register first</h4>
                 <label for="">Name</label><br>
-                <input name="name" class="modal-input" type="text" id=""><br>
+                <input required name="name" class="modal-input" type="text" id=""><br>
                 <label for="">Username</label><br>
-                <input name="username" class="modal-input" type="text"><br>
+                <input required name="username" class="modal-input" type="text"><br>
                 <label for="">Email</label><br>
-                <input name="email" class="modal-input" type="text"><br>
+                <input requiredname="email" class="modal-input" type="text"><br>
                 <label for="">Password</label><br>
-                <input name="password" class="modal-input" type="text"><br>
+                <input required name="password" class="modal-input" type="text"><br>
                 <button class="btn submit" type="submit">Save</button><br>
                 <span class="modal-closer">X</span>
             </form>

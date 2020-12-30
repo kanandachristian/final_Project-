@@ -119,12 +119,10 @@
                                 <div class="control">
                                     <select required value="adverttype" name="adverttype" id="adverttype">
                                             <option selected disabled value="">e.g house</option>
-                                        {% for property in properties %}
-                                        <option value="{{property.Advert_type}}" name="{{property.Advert_type}}">{{property.Advert_type}}</option>
-                                        <!-- <option value="house" name="house">House</option>
+                                        <option value="apartment" name="apartment">Apartment</option>
+                                        <option value="house" name="house">House</option>
                                         <option value="office" name="office">Office</option>
-                                        <option value="shop" name="shop">shop hall</option> -->
-                                        {% endfor  %}
+                                        <option value="other" name="shop">Other</option>
                                     </select>
                                 </div>
                             </div>
