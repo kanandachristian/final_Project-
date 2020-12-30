@@ -3,7 +3,8 @@
     {% if result %}
     <div class="infor-result">
         <span class="result">Result of:</span>
-        <div class="is-property"><span>{% if prop %} <strong>{{prop|title}}</strong>{% else %} Any Property type {% endif %} for </span><span>{% if cat %} <strong>{{cat}}</strong>{% else %} Any Category {% endif %}  in </span> <span> {% if place %} <strong>{{place}}</strong>{% else %} Any Place {% endif %} </span>            with <span>{% if bed %} {{bed}} Rooms {% else %} Any number of Room {% endif %}</span></div>
+        <div class="is-property"><span>{% if prop %} <strong>{{prop|title}}</strong>{% else %} Any Property type {% endif %} for </span><span>{% if cat %} <strong>{{cat}}</strong>{% else %} Any Category {% endif %}  in </span> <span> {% if place %} <strong>{{place}}</strong>{% else %} Any Place {% endif %} </span>with
+            <span>{% if bed %} {{bed}} Rooms {% else %} Any number of Room {% endif %}</span></div>
     </div>
     <div class="row searchResult">
         <div class="col-md-12">
@@ -71,7 +72,15 @@
                 {% endfor %}
 
             </div>
-
+            {% if values %}
+            <div class="pagination">
+                {% if values.has_previous %}
+                <a href="{{values.get_absolute_url}}?page={{values.previous_page_number}}">
+                    << Prev</a>
+                        {% endif %} {% if values.has_next %}
+                        <a href="{{values.get_absolute_url}}?page={{values.next_page_number}}">Nex >> </a> {% endif %}
+            </div>
+            {% endif %}
         </div>
     </div>
 

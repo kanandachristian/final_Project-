@@ -1,4 +1,4 @@
-{% extends 'Properties/home_page.html' %} {% load static %} {% block title %} {% if Advert_type %}{{ Advert_type.name|title }}{% else %}Other Properties{% endif %} {% endblock %} {% block content %}
+{% extends 'Properties/home_page.html' %} {% load static %} {% block title %} {% if category %}{{ category.name|title }}{% else %}Other Properties{% endif %} {% endblock %} {% block content %}
 <div class="body">
     <div class="container-big">
         <div class="fourth-left">

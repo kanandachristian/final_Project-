@@ -7,26 +7,28 @@
         <div class="first-blog">
             <div class="ll-info">Landlord Information</div>
             <label class="ll-kind" for="">Which kind of landlord are You?</label><br>
-            <input type="checkbox" name="Existed" id="exist" value="Exist" onclick="myFunction()">
+            <input type="checkbox" name="landlord-id" id="exist" value="Exist" onclick="myFunction()">
             <label for="exist">I already registered!</label>
             <div id="myDIV">
-                <input id="1" value="1" type="radio"> <label class="radio" for="1">I am an individual</label><br>
-                <input id="2" value="2" type="radio"> <label class="radio" for="2">I am a company/agency</label><br>
+                <div>
+                    <input id="1" value="1" type="radio"> <label class="radio" for="1">I am an individual</label><br>
+                    <input id="2" value="2" type="radio"> <label class="radio" for="2">I am a company/agency</label><br>
+                </div>
 
                 <label for="">Your name<Span>*</Span></label><br>
-                <input type="text" required><br>
+                <input name="l-name" type="text" required><br>
                 <label for="">Your email<Span>*</Span></label><br>
-                <input type="text" required placeholder="Eg: houserental@gmail.com"><br>
+                <input name="l-email" type="text" required placeholder="Eg: houserental@gmail.com"><br>
                 <div class="profil-info">Your email will be used only by the company for contacting you</div>
                 <label for="">Your Id/Passport number<Span>*</Span></label><br>
-                <input type="text" required><br>
+                <input name="l-id" type="text" required><br>
                 <div class="profil-info">Your Id is required only for security issues </div>
                 <label for="">Your Phone number<Span>*</Span></label><br>
-                <input type="tel" required placeholder="Eg. +250782505763">
+                <input name="l-phone" type="tel" required placeholder="Eg. +250782505763">
             </div>
-            <div class="myP" d="myP">
+            <div class="myP" id="myP">
                 <label for="">Select Your Id<Span>*</Span></label><br>
-                <select class="id-field" required name="" id="">
+                <select name="l-id" class="id-field" required name="" id="">
                         <option selected value="">...</option>
                         {% for land in landlords %}
                         <option value="">{{land.landlord_id}}</option>
@@ -40,22 +42,23 @@
                 <div class="card-body ">
                     <div>
                         <label for="">Category<Span>*</Span></label><br>
-                        <select required name="" id="">
+                        <select name="p-category" required name="" id="">
                                 <option selected value="">Sale</option>
-                                <option value="">Rent</option>
-                                <option value="">Sale</option>
+                                <option value="1">Rent</option>
+                                <option value="2">Sale</option>
                             </select></div><br>
                     <div> <label for="">Property type<Span>*</Span></label><br>
-                        <select required name="" id="">
+                        <select name="p-type" required name="" id="">
                                 <option selected value="">House</option>
-                                <option value="">Apartment</option>
-                                <option value="">Office</option>
-                                <option value="">House</option>
+                                <option value="Apartment">Apartment</option>
+                                <option value="Office">Office</option>
+                                <option value="House">House</option>
+                                <option value="other">Other</option>
                             </select></div>
                     <br>
                     <div>
                         <label for="">Property title <span>*</span></label><br>
-                        <input type="text" placeholder="Eg. Nice house for rent in Bugangari"><br>
+                        <input name="p-title" type="text" placeholder="Eg. Nice house for rent in Bugangari"><br>
                         <div class="profil-info">
                             The title you will provide will be posted on the profile of your property <br>
                         </div>
@@ -68,27 +71,29 @@
                 <div class="card-header ">Property Pricing</div>
                 <div class="card-body">
 
-                    <label for="">Is Your Price negotiable ?</label><br>
+                    <!-- <label for="">Is Your Price negotiable ?</label><br>
                     <input value="1" type="radio"> <label class="radio" for="">No</label><br>
-                    <input value="2" type="radio"> <label class="radio" for="">Yes</label><br>
+                    <input value="2" type="radio"> <label class="radio" for="">Yes</label><br> -->
 
                     <label for="">Price<Span>*</Span></label><br>
-                    <input required value type="number"><br>
+                    <input name="p-price" required value type="number"><br>
 
                     <label for="">Currency<span>*</span></label><br>
-                    <select name="" id="">
-                            <option selected value="">RWF</option>
-                            <option value="">USD</option>
-                            <option value="">CDF</option>
+                    <select name="p-currency" id="">
+                            <option selected value="">Eg. RWF</option>
+                            <option value="USD">USD</option>
+                            <option value="RWF">RWF</option>
+                            <option value="CDF">CDF</option>
                         </select><br>
                     <label for="">Payable<span>*</span></label><br>
-                    <select name="" id="">
-                            <option selected value="">Daily</option>
-                            <option value="">Weekly</option>
-                            <option selected value="">Monthly</option>
-                            <option value="">Semester</option>
-                            <option value="">Trimester</option>
-                            <option value="">Yearly</option>
+                    <select name="p-payable" id="">
+                            <option selected value="">Eg. Daily</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Semester">Semester</option>
+                            <option value="Trimester">Trimester</option>
+                            <option value="Yearly">Yearly</option>
                         </select>
                 </div>
             </div>
@@ -97,14 +102,14 @@
             <div class="card card-second">
                 <div class="card-header ">Property Characteristics</div>
                 <div class="card-body">
-                    <label for="">Bedrooms</label><br>
-                    <input type="number"><br>
-                    <div class="profil-info">Bedroom is required only if the property type is House, apartment or Building
-                    </div>
+                    <label for="">Rooms</label><br>
+                    <input name="p-room" type="number"><br>
+                    <!-- <div class="profil-info">Bedroom is required only if the property type is House, apartment or Building
+                    </div> -->
                     <label for="">Bathrooms/toilet</label><br>
-                    <input type="number"><br>
+                    <input name="p-bathroom" type="number"><br>
                     <label for="">Property Description<span>*</span></label><br>
-                    <textarea required name="" id="" cols="95" rows="10" placeholder=""></textarea>
+                    <textarea name="p-description" class="area p-1" required name="" id="" cols="95" rows="10" placeholder=""></textarea>
                     <div class="profil-info">The description of your Property must provide all details that are related to your property in order to let Clients being informed about, before the physical visit </div>
                 </div>
 
@@ -115,13 +120,13 @@
                 <div class="card-header ">Property Location</div>
                 <div class="card-body">
                     <label for="">Sector/Umurenge<span>*</span></label><br>
-                    <input type="text" name="" id="" required><br>
+                    <input type="text" name="p-sector" id="" required><br>
                     <label for="">Cell/Akagari<span>*</span></label><br>
-                    <input type="text" name="" id="" required><br>
+                    <input type="text" name="p-cell" id="" required><br>
                     <label for="">Village/Umudugudu<span>*</span></label><br>
-                    <input type="text" name="" id="" required><br>
+                    <input type="text" name="p-village" id="" required><br>
                     <label for="">Number and Street<span>*</span></label><br>
-                    <input type="text" name="" id="" required><br>
+                    <input type="text" name="p-number" id="" required><br>
                 </div>
 
 
@@ -129,7 +134,7 @@
                     <div class="profil-info">Use the "Choose File" button below to upload the images of your property. Pictures will be uploaded together but they will appear one by one. They might take time to appear depending on the speed of your internet connection</div><br>
                     <div></div>
                     <div></div>
-                    <input class="file-upload" type="file">
+                    <input name="p-profile" class="file-upload" type="file">
                 </div>
             </div>
         </div>
@@ -140,9 +145,9 @@
                     <img class="image-fluide" src="{% static 'img/oip.jpg'%}" alt="">
                     <div class="">
                         <label for="">Latitude</label><br>
-                        <input type="text"><br>
+                        <input name="latitude" type="text"><br>
                         <label for="">Longitude</label><br>
-                        <input type="text"><br>
+                        <input name="longitude" type="text"><br>
                     </div>
                 </div>
             </div>

@@ -209,14 +209,23 @@ def search_result_form(request):
     return render(request, 'Properties/searchResult.html')
 
 
-def search(request):
+def search(request, category_slug=None):
+    category = None
     category = Category.objects.all()
     categories = Category.objects.all()
     properties = Propertie.objects.all()
     result = Propertie.objects.all()
     allproperties = Propertie.objects.filter(available=True, vaccant=True)
 
-    p = Paginator(properties, 6)
+    if category_slug:
+
+        category = get_object_or_404(
+            Category, slug=category_slug)
+
+        properties = Propertie.objects.filter(
+            category=category, available=True, vaccant=True)
+
+    p = Paginator(properties, 8)
     page_num = request.GET.get('page', 1)
 
     try:
@@ -242,6 +251,18 @@ def search(request):
 
             else:
                 return render(request, 'Properties/searchResult.html', {'category': category, 'categories': categories, 'result': result, 'allproperties': allproperties, 'values': page, 'properties': properties, 'cat': cat, 'prop': prop, 'place': place, 'bed': bed})
+
+        if cat and prop and bed:
+
+            result = Propertie.objects.filter(
+                category=cat, Advert_type=prop, Bedroom=bed, available=True, vaccant=True)
+
+            if result:
+
+                return render(request, 'Properties/searchResult.html', {'category': category, 'categories': categories, 'result': result, 'allproperties': allproperties, 'properties': properties, 'values': page, 'cat': cat, 'prop': prop, 'bed': bed})
+
+            else:
+                return render(request, 'Properties/searchResult.html', {'category': category, 'categories': categories, 'result': result, 'allproperties': allproperties, 'values': page, 'properties': properties, 'cat': cat, 'prop': prop, 'bed': bed})
 
         if cat and prop and place:
 
@@ -277,8 +298,20 @@ def search(request):
 
             else:
                 return render(request, 'Properties/searchResult.html', {'category': category, 'categories': categories, 'result': result, 'allproperties': allproperties, 'values': page, 'cat': cat, 'properties': properties, 'cat': cat})
+        if prop:
+
+            result = Propertie.objects.filter(
+                Advert_type=prop, available=True, vaccant=True)
+
+            if result:
+                return render(request, 'Properties/searchResult.html', {'category': category, 'categories': categories, 'result': result, 'allproperties': allproperties, 'properties': properties, 'values': page, 'prop': prop})
+
+            else:
+                return render(request, 'Properties/searchResult.html', {'category': category, 'categories': categories, 'result': result, 'allproperties': allproperties, 'values': page, 'cat': cat, 'properties': properties, 'prop': prop})
+
         else:
             return render(request, 'Properties/searchResult.html', {'category': category, 'categories': categories, 'result': result, 'allproperties': allproperties, 'values': page, 'properties': properties, 'cat': cat})
 
     else:
-        return render(request, 'Properties/searchResult.html', {'category': category, 'categories': categories, 'result': result, 'allproperties': allproperties, 'item': page, 'properties': properties})
+
+        return render(request, 'Properties/searchResult.html', {'category': category, 'categories': categories, 'properties': properties,  'values': page, 'allproperties': allproperties})
