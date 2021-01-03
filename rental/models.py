@@ -18,6 +18,7 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('rental:property_list_by_category', args=[self.slug])
 
+
 class Landlord(models.Model):
     landlord_type = models.CharField(max_length=200, db_index=True)
     landlord_id = models.CharField(max_length=200, db_index=True, unique=True)

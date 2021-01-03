@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from django.core.paginator import Paginator, EmptyPage
 from django.contrib import messages
@@ -14,7 +14,7 @@ def home_page(request, category_slug=None):
     categories = Category.objects.all()
     properties = Propertie.objects.filter(available=True, vaccant=True)
 
-    p = Paginator(properties, 6)
+    p = Paginator(properties, 9)
     page_num = request.GET.get('page', 1)
 
     try:
@@ -207,6 +207,40 @@ def signup_form(request):
 
 def search_result_form(request):
     return render(request, 'Properties/searchResult.html')
+
+
+def contact_form(request, category_slug=None):
+    category = None
+    categories = Category.objects.all()
+    properties = Propertie.objects.filter(available=True, vaccant=True)
+
+    p = Paginator(properties, 6)
+    page_num = request.GET.get('page', 1)
+
+    try:
+        page = p.page(page_num)
+    except EmptyPage:
+        page = p.page(1)
+
+    if category_slug:
+
+        category = get_object_or_404(
+            Category, slug=category_slug)
+
+        properties = Propertie.objects.filter(
+            category=category, available=True, vaccant=True)
+
+    if request.method == "POST":
+        email = request.POST['email']
+        message = request.POST['message']
+
+        contactu.objects.create(
+            message=message,
+            email=email
+        )
+        return render(request, 'Properties/home_page.html', {'category': category, 'categories': categories, 'properties': properties, 'items': page})
+
+    return render(request, 'Properties/home_page.html', {'category': category, 'categories': categories, 'properties': properties, 'items': page})
 
 
 def search(request, category_slug=None):

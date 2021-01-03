@@ -4,12 +4,13 @@
         <div class="container-left">
             <div class="header-title">{{properties.name}}</div>
             <div class="house-container">
-                <div class="profil"><img class="image-fluide image-profil" src="{% if properties.image %}{{ properties.image.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" alt="">
+                <div class="profil">
+                    <a href="{% if properties.image %}{{ properties.image.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" data-lightbox="detail-img"><img class="image-fluide image-profil" src="{% if properties.image %}{{ properties.image.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" alt=""></a>
                 </div>
                 <div class="detail-pic">
                     {% for i in detailImages %}
                     <div class="detail-img">
-                        <img src="{% if i.images %}{{ i.images.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" alt="">
+                        <a href="{% if i.images %}{{ i.images.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" data-lightbox="detail-img"><img src="{% if i.images %}{{ i.images.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" alt=""></a>
                     </div>
                     {% endfor %}
                 </div>
@@ -101,7 +102,7 @@
                 <div class="card-body">
                     {% for property in allproperties %}
                     <div class="card-body-slide ">
-                        <a href="">
+                        <a href="{{ property.get_absolute_url }}">
                             <div class="card-header off">{{ property.name|truncatechars:50 }}</div>
                             <img class="image-fluide image-detail" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt=""></a>
                     </div>

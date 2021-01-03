@@ -64,12 +64,19 @@ a {
     height: 100%;
     width: 100%;
     position: relative;
+    object-fit: cover;
 }
 
-.image-position:hover {
-    padding: 2%;
+.image-position img:hover {
+    filter: grayscale(50);
     transition: ease 0.3s;
+    padding: 2%;
 }
+
+
+/* .image-position:hover {
+    transition: ease 0.3s;
+} */
 
 .image-position .prix {
     bottom: 2px;

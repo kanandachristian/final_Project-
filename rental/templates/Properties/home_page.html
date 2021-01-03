@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/converte.css' %}">
     <link rel="stylesheet" href="{% static 'css/fourth.css' %}">
     <link rel="stylesheet" href="{% static 'css/searchResult.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
 
 
     <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
@@ -86,12 +87,12 @@
                 <div class="h2">WELCOME, FEEL FREE</div>
                 <div class="h3">AND CHOOSE THE BEST PROPERTY EVER</div>
                 <div class="h4">This plateform helps you Rent, buy and sell house or any immovable</div>
-                <div class="location">
+                <!-- <div class="location">
                     <div> Find &nbsp
                         <a href="#" style="color: rgb(238, 144, 81,1);"> Rental houses </a> &nbsp by Map location
                     </div>
                     <i class="fa fa-map-marker"></i>
-                </div>
+                </div> -->
             </div>
             <!-- End App Info -->
             <!-- Quick search -->
@@ -204,14 +205,14 @@
         </div>
     </div>
     <!-- second-body -->
-    <div class="container-fluid py-2">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-11">
+            <div class="col-md-10">
                 {% block pagination %}
                 <div class="row">
                     <div class="col-md-12 col-lg-12 ">
                         <div class="row">
-                            {% for property in items %}
+                            <!-- {% for property in items %}
                             <div class="col-md-4 p-1">
                                 <div class="card card-body shadow carte">
                                     <img class="image-fluide image-pic" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt="Photo">
@@ -237,6 +238,28 @@
                                     </p>
                                     <div class="absolute_url">
                                         <a href="{{ property.get_absolute_url }}">View</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %} -->
+                            {% for property in items %}
+                            <div class="col-md-4 properties-result">
+                                <div class="card carde">
+                                    <div class="image-position">
+                                        <a href="{{ property.get_absolute_url }}"><img class="image-fluide" src="{% if property.image %} {{ property.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}" alt=""></a>
+                                        <div class="prix">{{ property.currency|truncatechars:10}} {% if property.property_price %} {{ property.property_price}} <span style="font-size: small;">/{{ property.payable|truncatechars:10|title}}</span>{% endif %}</div>
+                                    </div>
+                                    <div class="informations">
+                                        <a class="link" href="{{ property.get_absolute_url }}">
+                                            <div class="about-rent"><span class="s1">{% if property.Advert_type %} {{ property.Advert_type|title}} {% else %} Publicity {% endif %}</span><span class="s2">{% if property.category %} {{ property.category|title}} {% else %} Publicity {% endif %}</span></div>
+                                            <div class="title">{{ property.name|truncatechars:20|title}}</div>
+                                            <div>{% if property.description %} {{ property.description|truncatewords:10 }} {% else %} It's a good property in {{ property.category}} ever seen {% endif %}</div>
+                                            <div class="property-address"><i class="fa fa-map-marker"></i>&nbsp;<span>{{ property.sector|title}}|</span><span>{{ property.cell|title}} |</span> <span>{{ property.village|title}}</span></div>
+                                            <div class="bed-bath"><i class="fa fa-bed i-d">
+                                    {{ property.Bedroom}}&nbsp;&nbsp;
+                                </i>{% if property.Bathroom %}<i class="fa fa-bath i-d">{{ property.Bathroom}}
+                                </i>{% endif %}</div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -289,7 +312,7 @@
                         <li>{{c.name}} properties</li>
                     </a>
                     {% endfor %}
-                    <a href="">
+                    <a href="{% url 'rental:by_type'%}">
                         <li>Other Properties</li>
                     </a>
                     <a href="{% url 'rental:signup'%}">
@@ -300,7 +323,7 @@
 
             <div class="footer-section contact-form">
                 <h2>Contact us </h2><br>
-                <form action="" method="post">
+                <form action="{% url 'rental:contact_us' %}" method="post">
                     {% csrf_token %}
                     <input type="email" name="email" class="text-input contact-input" placeholder="Your email address..." required>
                     <textarea rows="4" name="message" class="text-input contact-input" placeholder="Your message..." required></textarea>
@@ -320,6 +343,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
+    <script type="text/javascript" src="{% static 'js/lightbox-plus-jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/carousel.js'%}"></script>
 
     <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
