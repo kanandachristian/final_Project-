@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^register/?', views.register_form, name='register'),
     url(r'^login/?', views.login_form, name='login'),
     url(r'^signup/?', views.signup_form, name='signup'),
+    url(r'^contact_us/?', views.contact_form, name='contact_us'),
     url(r'^SearchResults/?', views.search_result_form, name='searchresult'),
     url(r'^searching/?', views.search, name='search'),
     url(r'^book/?', views.book_form, name='book'),

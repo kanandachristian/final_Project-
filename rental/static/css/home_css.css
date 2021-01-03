@@ -27,6 +27,10 @@ a {
     text-decoration: none;
 }
 
+#content {
+    background-color: red;
+}
+
 .clearfix::after {
     content: '';
     display: block;
@@ -755,6 +759,8 @@ header .menu-toggle {
     }
     .showing {
         max-height: 100em;
+        transition: ease-in 0.4s;
+        transition: ease-out 0.5s;
     }
     header ul li {
         width: 100%;
@@ -763,6 +769,7 @@ header .menu-toggle {
         position: static;
         display: block;
         width: 100%;
+        transition: ease-in .3s;
     }
     header ul li ul li a {
         padding: 7px;
@@ -788,11 +795,6 @@ header .menu-toggle {
     header .logo {
         margin-left: .2em;
     }
-    header .logo img {
-        margin: 1% 1%;
-        width: 10%;
-        height: 40px;
-    }
     header .logo-text {
         margin: 20px 9px 9px 9px;
         font-size: 100%;
@@ -804,8 +806,8 @@ header .menu-toggle {
         margin-left: 2em;
     }
     header .logo img {
-        margin: 2.5% 1%;
-        width: 10%;
+        margin: 4% 1%;
+        width: 15%;
         height: 40px;
     }
     header .logo .line {
@@ -824,6 +826,38 @@ header .menu-toggle {
         margin-bottom: 2%;
         display: block;
     }
+    .post-slider .info-container {
+        /* background-color: rgb(143, 25, 25); */
+        width: 100%;
+        height: auto;
+        color: white;
+    }
+    .post-slider .info-container .h1 {
+        margin: 2% 0 2% 23%;
+        padding: 0 0 2% 0;
+        width: 50%;
+        font-size: 1.40em;
+        text-align: center;
+        border-bottom: 3px solid white;
+        display: flex;
+        position: relative;
+    }
+    .post-slider .info-container .h2,
+    .h3 {
+        font-size: 100%;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        height: auto;
+    }
+    .post-slider .info-container .h4 {
+        font-size: 120%;
+        text-align: center;
+        width: 100%;
+        height: auto;
+        margin-top: 2%;
+        margin-bottom: 4%;
+    }
 }
 
 @media only screen and (max-width: 900px) {
@@ -837,36 +871,6 @@ header .menu-toggle {
         min-height: 100%;
         width: 100%;
         padding-bottom: 2%;
-    }
-    .post-slider .info-container {
-        /* background-color: rgb(54, 53, 53); */
-        width: 100%;
-        height: auto;
-        color: white;
-    }
-    .post-slider .info-container .h1 {
-        margin: 5% 5px 20px 23%;
-        padding: 2% 4% 3% 4%;
-        width: 50%;
-        font-size: 1.80em;
-        text-align: center;
-        border-bottom: 3px solid white;
-        display: flex;
-    }
-    .post-slider .info-container .h2,
-    .h3 {
-        font-size: 200%;
-        font-weight: bold;
-        text-align: center;
-        width: 100%;
-        height: auto;
-    }
-    .post-slider .info-container .h4 {
-        font-size: 120%;
-        text-align: center;
-        width: 100%;
-        height: auto;
-        margin-top: 2%;
     }
     .post-slider .location {
         background-color: rgb(4, 92, 63);
@@ -889,7 +893,7 @@ header .menu-toggle {
     }
     .all_search_content {
         background-color: rgb(255, 255, 255);
-        width: 80%;
+        width: 90%;
         border-radius: 4px;
         margin-left: 15px;
         padding: 3% 0 2% 4%;
@@ -904,7 +908,7 @@ header .menu-toggle {
         margin-right: auto;
         margin-top: 10px;
         margin-bottom: 2%;
-        display: block;
+        display: none;
     }
     .all-body .rent-link,
     .sell-link,
@@ -912,6 +916,38 @@ header .menu-toggle {
         background-color: #444;
         width: 80%;
         margin: 5%;
+    }
+    .post-slider .info-container {
+        /* background-color: rgb(143, 25, 25); */
+        width: 100%;
+        height: auto;
+        color: white;
+    }
+    .post-slider .info-container .h1 {
+        margin: 2% 0 2% 23%;
+        padding: 0 0 2% 0;
+        width: 50%;
+        font-size: 1.40em;
+        text-align: center;
+        border-bottom: 3px solid white;
+        display: flex;
+        position: relative;
+    }
+    .post-slider .info-container .h2,
+    .h3 {
+        font-size: 20%;
+        font-weight: normal;
+        text-align: center;
+        width: 100%;
+        height: auto;
+    }
+    .post-slider .info-container .h4 {
+        font-size: 90%;
+        text-align: center;
+        width: 100%;
+        height: auto;
+        margin-top: 2%;
+        margin-bottom: 4%;
     }
 }
 
@@ -935,5 +971,37 @@ header .menu-toggle {
     }
     .footer .footer-content .contact-form .contact-btn {
         width: 100%;
+    }
+    .post-slider .info-container {
+        /* background-color: rgb(143, 25, 25); */
+        width: 100%;
+        height: auto;
+        color: white;
+    }
+    .post-slider .info-container .h1 {
+        margin: 2% 0 2% 23%;
+        padding: 0 0 2% 0;
+        width: 50%;
+        font-size: 1.40em;
+        text-align: center;
+        border-bottom: 3px solid white;
+        display: flex;
+        position: relative;
+    }
+    .post-slider .info-container .h2,
+    .h3 {
+        font-size: 90%;
+        font-weight: normal;
+        text-align: center;
+        width: 100%;
+        height: auto;
+    }
+    .post-slider .info-container .h4 {
+        font-size: 80%;
+        text-align: center;
+        width: 100%;
+        height: auto;
+        margin-top: 2%;
+        margin-bottom: 4%;
     }
 }
