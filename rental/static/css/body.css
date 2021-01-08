@@ -432,10 +432,11 @@
     padding: 1%;
     border: solid 1px;
     border-radius: 3px;
+    border: solid 1px rgb(15, 179, 179);
 }
 
-.book input[type=text]:hover {
-    border: solid 1px rgb(15, 179, 179);
+.book input[type=text]:hover,
+.inp:hover {
     border-radius: 4px;
     transition: ease .1s;
 }
@@ -688,6 +689,23 @@
         border-radius: 5px;
         overflow: hidden;
         display: inline-block;
+    }
+    .card-b-header {
+        text-align: center;
+    }
+    .card-book {
+        padding-left: 2%;
+    }
+    .book {
+        margin-bottom: 2%;
+        width: 100%;
+    }
+    .book .inp {
+        width: 100%;
+        padding: 1%;
+        border: solid 1px;
+        border-radius: 3px;
+        border: solid 1px rgb(15, 179, 179);
     }
 }
 

@@ -117,13 +117,13 @@ class Property_Taken(models.Model):
 
 class BookedPropertie(models.Model):
     customer_type = models.CharField(max_length=100, db_index=True)
-    customer_id = models.CharField(max_length=100, db_index=True, unique=True)
+    customer_id = models.CharField(max_length=100, db_index=True)
     customer_name = models.CharField(max_length=100, db_index=True)
     customer_email = models.EmailField(max_length=100, db_index=True)
     customer_phon = models.CharField(max_length=100, db_index=True)
     booking_period = models.CharField(max_length=100, db_index=True)
     property_booked = models.ForeignKey(
-        Propertie, related_name='Advert', on_delete=models.CASCADE)
+        Propertie, related_name='Property_booked', on_delete=models.CASCADE)
     available = models.BooleanField(default=True)
     vaccant = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)

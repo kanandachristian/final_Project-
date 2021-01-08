@@ -106,7 +106,7 @@
                                 <label for="">Type</label>
                                 <div class="control">
                                     <select required value="categorization" name="categorization" id="categorization">
-                                        <option selected disabled value="">e.g Rent</option>
+                                        <option selected value="">...</option>
                                         {% for c in categories %}
                                         <option value="{{c.id}}" >{{c.name}}</option>
                                         {% endfor %}
@@ -119,7 +119,7 @@
                                 <label for="">Property</label>
                                 <div class="control">
                                     <select required value="adverttype" name="adverttype" id="adverttype">
-                                            <option selected disabled value="">e.g house</option>
+                                        <option selected value="">...</option>
                                         <option value="apartment" name="apartment">Apartment</option>
                                         <option value="house" name="house">House</option>
                                         <option value="office" name="office">Office</option>
@@ -133,7 +133,7 @@
                                 <label for="">Place</label>
                                 <div class="control">
                                     <select value="place" name="place" id="place">
-                                        <option selected disabled value="">e.g Makoro</option>
+                                        <option selected value="">...</option>
                                         <option value="Gisenyi">Gisenyi</option>
                                         <option value="Bugangari">Bugangari</option>
                                         <option value="Mahoko">Mahoko</option>
@@ -150,7 +150,7 @@
                                 <label for="">Room</label>
                                 <div class="control">
                                     <select value="room" name="room" id="x" value="room">
-                                        <option selected disabled value="">e.g 1 Room</option>
+                                        <option selected value="">...</option>
                                         <option value="1">1 Room</option>
                                         <option value="2">2 Rooms</option>
                                         <option value="3">3 Rooms</option>
@@ -170,7 +170,7 @@
                                 <label for="">Price</label>
                                 <div class="control">
                                     <select value="price" name="price" id="" value="price">
-                                        <option selected disabled value="">e.g 100k-500k</option>
+                                        <option selected value="">...</option>
                                         <option value="10000">Less than 10k</option>
                                         <option value="50000">10k-50k</option>
                                         <option value="100000">50k-100k</option>
@@ -323,11 +323,11 @@
 
             <div class="footer-section contact-form">
                 <h2>Contact us </h2><br>
-                <form action="{% url 'rental:contact_us' %}" method="post">
+                <form action="{% url 'rental:contact_us'%}" method="post">
                     {% csrf_token %}
-                    <input type="email" name="email" class="text-input contact-input" placeholder="Your email address..." required>
-                    <textarea rows="4" name="message" class="text-input contact-input" placeholder="Your message..." required></textarea>
-                    <button type="submit" class="btn btn-big contact-btn">
+                    <input type="email" id="hiEmail" name="email" class="text-input contact-input" placeholder="Your email address..." required>
+                    <textarea rows="4" id="Msg" name="messageM" class="text-input contact-input" placeholder="Your message..." required></textarea>
+                    <button type="submit" id="!sendB" class="btn btn-big contact-btn">
                         <i class="fa fa-envelope"></i>
                         Send
                     </button>
@@ -344,9 +344,36 @@
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
     <script type="text/javascript" src="{% static 'js/lightbox-plus-jquery.min.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '#sendB', function() {
+                let username = '';
+                let hiEmail = $('#hiEmail').val().trim()
+                let hiMsg = $("#Msg").val().trim()
+
+                if (hiMsg === undefined || hiEmail === undefined) {
+                    alert("Fields are not completed")
+                } else {
+                    alert("message sent")
+                    Email.send({
+                        Host: "smtp.zoho.com",
+                        Username: "christian kananda",
+                        Password: "0736187588",
+                        To: hiEmail,
+                        From: 'kanandachristian@gmail.com',
+                        Subject: "This is the subject",
+                        Body: hiMsg
+                    }).then(
+                        message => alert(message)
+                    );
+                }
+            })
+        })
+    </script>
     <script type="text/javascript" src="{% static 'js/carousel.js'%}"></script>
 
     <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
+
 </body>
 
 </html>

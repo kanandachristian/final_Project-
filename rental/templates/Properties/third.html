@@ -5,12 +5,12 @@
             <div class="header-title">{{properties.name}}</div>
             <div class="house-container">
                 <div class="profil">
-                    <a href="{% if properties.image %}{{ properties.image.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" data-lightbox="detail-img"><img class="image-fluide image-profil" src="{% if properties.image %}{{ properties.image.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" alt=""></a>
+                    <a href="{% if properties.image %}{{ properties.image.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" data-lightbox="detail-img"><img class="image-fluide image-profil" src="{% if properties.image %}{{ properties.image.url }}{% else %}{% static 'img/noimage.jpg'%}{% endif %}" alt=""></a>
                 </div>
                 <div class="detail-pic">
                     {% for i in detailImages %}
                     <div class="detail-img">
-                        <a href="{% if i.images %}{{ i.images.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" data-lightbox="detail-img"><img src="{% if i.images %}{{ i.images.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" alt=""></a>
+                        <a href="{% if i.images %}{{ i.images.url }}{% else %}{% static 'img/nothin.png'%}{% endif %}" data-lightbox="detail-img"><img src="{% if i.images %}{{ i.images.url }}{% else %}{% static 'img/noimage.jpg'%}{% endif %}" alt=""></a>
                     </div>
                     {% endfor %}
                 </div>
@@ -61,13 +61,14 @@
             <div class="card card-card">
                 <div class="card-header card-b-header">Book The Property Here</div>
                 <div class="card-body card-book">
-                    <form id="book_form" method="POST">
+                    <form id="book_form" action="{% url 'rental:book'%}" method="POST">
                         {% csrf_token %}
                         <div class="book">
                             <label for="">Which kind of Client are You?<Span>*</Span></label><br>
                             <select style="padding: 1.5%;" class="inp" required name="kind" id="kind">
-                                <option value="2">company/agency</option>
-                                <option value="1">individual</option>
+                                <option selected value="">...</option>
+                                <option name="company" value="company">company/agency</option>
+                                <option name="individual" value="individual">individual</option>
                             </select>
                         </div>
                         <div class="book">
@@ -75,23 +76,32 @@
                             <input required name="name" id="name" class="inp" type="text">
                         </div>
                         <div class="book">
-                            <label for="">Your Id/Passport number</label><br>
+                            <label for="">Your Id/Passport number<Span>*</Span></label><br>
                             <input required name="idnumber" id="idnumber" class="inp" type="text">
                         </div>
                         <div class="book">
-                            <label for="">Your Phone number</label><br>
+                            <label for="">Your Phone number<Span>*</Span></label><br>
                             <input required name="phone" id="phone" class="inp" type="text">
                         </div>
                         <div class="book">
-                            <label for="">Your Email</label><br>
+                            <label for="">Your Email<Span>*</Span></label><br>
                             <input required name="email" id="email" class="inp" type="email">
                         </div>
                         <div class="book">
-                            <label for="">Property id</label><br>
-                            <input name="proId" id="proId" class="inp" type="text" value="{{properties.slug}}">
+                            <label for="">Booking Period<Span>*</Span></label><br>
+                            <select name="period" style="padding: 1.5%;" class="inp" name="bookin-period" id="">
+                                <option selected value="">...</option>
+                                    <option value="Day">1 Day</option>
+                                    <option value="Week">One-Weekly</option>
+                                    <option value="month">One-Month</option>
+                                </select>
+                        </div>
+                        <div class="book">
+                            <!-- <label for="">Property id</label><br> -->
+                            <input name="proId" id="proId" class="inp" type="hidden" value="{{properties.id}}">
                         </div>
                         <!-- <input class="btn-submit modal-btn" type="submit" value="Book"> -->
-                        <button class="btn-submit modal-btn" type="submit">Book</button>
+                        <button class="btn-submit " type="submit">Book</button>
 
                     </form>
                 </div>
@@ -171,16 +181,16 @@
 </script>
 <script type="text/javascript">
     var slideIndex = 1;
-    var modalbtn = document.querySelector('.modal-btn');
-    var modalbg = document.querySelector('.modal-bg');
-    var modalcloser = document.querySelector('.modal-closer');
+    // var modalbtn = document.querySelector('.modal-btn');
+    // var modalbg = document.querySelector('.modal-bg');
+    // var modalcloser = document.querySelector('.modal-closer');
 
-    modalbtn.addEventListener('click', function() {
-        modalbg.classList.add('bg-active');
-    });
-    modalcloser.addEventListener('click', function() {
-        modalbg.classList.remove('bg-active');
-    });
+    // modalbtn.addEventListener('click', function() {
+    //     modalbg.classList.add('bg-active');
+    // });
+    // modalcloser.addEventListener('click', function() {
+    //     modalbg.classList.remove('bg-active');
+    // });
 
     showImage(slideIndex);
 

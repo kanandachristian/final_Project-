@@ -3,7 +3,7 @@ from django.contrib.auth.models import Group
 from django.utils.html import format_html
 from .models import (contactu,  Category, Landlord, Propertie,
                      Property_image, Property_Taken, BookedPropertie, Employee, Signup)
-
+from convert.models import Rate
 # Admin site
 admin.site.site_header = 'Houserental Admin'
 admin.site.site_title = 'Houserental Admin'
@@ -76,11 +76,12 @@ admin.site.register(Property_Taken, Property_TakenAdmin)
 
 
 class BookedPropertieAdmin(admin.ModelAdmin):
-    list_display = ['customer_type', 'customer_id', 'customer_name', 'customer_email', 'customer_phon', 'booking_period',
-                    'property_booked', 'available', 'created', 'updated']
+    list_display = ['customer_type', 'customer_id', 'customer_name', 'customer_email', 'customer_phon',
+                    'property_booked', 'available', 'vaccant', 'created', 'booking_period', 'updated']
     list_filter = ['customer_id', 'property_booked', 'booking_period', 'available', 'vaccant', 'created',
                    'updated']
     search_fields = ['customer_name']
+    list_editable = ['available', 'vaccant']
 
 
 admin.site.register(BookedPropertie, BookedPropertieAdmin)
@@ -112,4 +113,13 @@ class contactuAdmin(admin.ModelAdmin):
 
 
 admin.site.register(contactu, contactuAdmin)
+
+
+class RateAdmin(admin.ModelAdmin):
+    list_display = ['created', 'updated', 'Rwandan',
+                    'congolese', 'Usd']
+    list_editable = ['Rwandan', 'congolese', 'Usd']
+
+
+admin.site.register(Rate, RateAdmin)
 admin.site.unregister(Group)
