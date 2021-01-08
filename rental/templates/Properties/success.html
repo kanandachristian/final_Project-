@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/success.css' %}">
+    <title>Success Page</title>
+</head>
+
+<body>
+    <div class="container success">
+        <div>{% if messages %} {% for m in messages %}{{m}}{% endfor %}{% else %} An Error Occurred {% endif %}</div>
+        <a href="{% url 'rental:home_page'%}">Visit Home page</a>
+    </div>
+</body>
+
+</html>

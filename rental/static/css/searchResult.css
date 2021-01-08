@@ -9,7 +9,9 @@ a {
 .infor-result {
     padding-top: 3%;
     padding-left: 2%;
+    padding-bottom: 3%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* background-color: rgb(104, 101, 101); */
 }
 
 .infor-result .result {
@@ -18,15 +20,38 @@ a {
 }
 
 .infor-result .is-property {
-    background-color: rgb(218, 218, 218);
-    padding: 1%;
-    width: 98%;
+    background-color: rgb(137, 204, 123);
+    padding: 1.5%;
+    width: 90%;
 }
 
 .infor-result .no-property {
     background-color: rgb(236, 170, 158);
-    padding: 1%;
+    padding: 2%;
     width: 90%;
+    margin-bottom: 9%;
+}
+
+.result-info {
+    padding-top: 3%;
+    padding-left: 2%;
+    padding-bottom: 3%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* background-color: rgb(104, 101, 101); */
+    border-bottom: solid 2px rgb(255, 174, 0);
+}
+
+.result-info .result {
+    font-size: 150%;
+    font-weight: bolder;
+}
+
+.result-info .no-property {
+    background-color: rgb(236, 170, 158);
+    padding: 2%;
+    width: 90%;
+    margin-bottom: 9%;
+    margin-top: 2%;
 }
 
 .info-propose {
@@ -34,6 +59,7 @@ a {
     padding: 2%;
     font-size: 150%;
     color: rgb(3, 34, 34);
+    /* background-color: rgb(240, 240, 240); */
 }
 
 .searchResult {
@@ -41,7 +67,7 @@ a {
 }
 
 .searchResult .bordere {
-    border-bottom: solid 2px #ccc;
+    border-bottom: solid 2px rgb(255, 174, 0);
     padding: 2%;
 }
 

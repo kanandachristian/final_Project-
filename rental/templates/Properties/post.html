@@ -1,7 +1,7 @@
 {% extends 'Properties/home_page.html' %} {% load static %} {% block content %}
 
 <div class="container-fluid landlord-post">
-    <form action="save">
+    <form action="{% url 'rental:save_post'%}" method="POST">
         {% csrf_token %}
         <div class="fill">Welcome and Fill the Requirements Here down in order to Post your property</div>
         <div class="first-blog">
@@ -11,8 +11,11 @@
             <label for="exist">I already registered!</label>
             <div id="myDIV">
                 <div>
-                    <input id="1" value="1" type="radio"> <label class="radio" for="1">I am an individual</label><br>
-                    <input id="2" value="2" type="radio"> <label class="radio" for="2">I am a company/agency</label><br>
+                    <select name="l-kind" class="landlord-type" required name="" id="">
+                        <option selected value="">...</option>
+                        <option name ="individual" value="individual">individual</option>
+                        <option name ="company" value="company">company</option>
+                    </select>
                 </div>
 
                 <label for="">Your name<Span>*</Span></label><br>
@@ -26,15 +29,15 @@
                 <label for="">Your Phone number<Span>*</Span></label><br>
                 <input name="l-phone" type="tel" required placeholder="Eg. +250782505763">
             </div>
-            <div class="myP" id="myP">
+            <!-- <div class="myP" id="myP">
                 <label for="">Select Your Id<Span>*</Span></label><br>
-                <select name="l-id" class="id-field" required name="" id="">
+                <select name="id-landlord" class="id-field" required name="" id="">
                         <option selected value="">...</option>
                         {% for land in landlords %}
-                        <option value="">{{land.landlord_id}}</option>
+                        <option name ="{{land.landlord_id}}" value="{{land.landlord_id}}">{{land.landlord_id}}</option>
                         {% endfor %}
                     </select>
-            </div>
+            </div> -->
         </div>
         <div class="second-blog">
             <div class="card card-second">
@@ -43,13 +46,13 @@
                     <div>
                         <label for="">Category<Span>*</Span></label><br>
                         <select name="p-category" required name="" id="">
-                                <option selected value="">Sale</option>
+                                <option selected value="">...</option>
                                 <option value="1">Rent</option>
                                 <option value="2">Sale</option>
                             </select></div><br>
                     <div> <label for="">Property type<Span>*</Span></label><br>
                         <select name="p-type" required name="" id="">
-                                <option selected value="">House</option>
+                                <option selected value="">...</option>
                                 <option value="Apartment">Apartment</option>
                                 <option value="Office">Office</option>
                                 <option value="House">House</option>
@@ -80,14 +83,14 @@
 
                     <label for="">Currency<span>*</span></label><br>
                     <select name="p-currency" id="">
-                            <option selected value="">Eg. RWF</option>
+                            <option selected value="">...</option>
                             <option value="USD">USD</option>
                             <option value="RWF">RWF</option>
                             <option value="CDF">CDF</option>
                         </select><br>
                     <label for="">Payable<span>*</span></label><br>
                     <select name="p-payable" id="">
-                            <option selected value="">Eg. Daily</option>
+                            <option selected value="">...</option>
                             <option value="Daily">Daily</option>
                             <option value="Weekly">Weekly</option>
                             <option value="Monthly">Monthly</option>
@@ -109,7 +112,7 @@
                     <label for="">Bathrooms/toilet</label><br>
                     <input name="p-bathroom" type="number"><br>
                     <label for="">Property Description<span>*</span></label><br>
-                    <textarea name="p-description" class="area p-1" required name="" id="" cols="95" rows="10" placeholder=""></textarea>
+                    <textarea name="p-description" class="area p-1" required name="" id="" placeholder=""></textarea>
                     <div class="profil-info">The description of your Property must provide all details that are related to your property in order to let Clients being informed about, before the physical visit </div>
                 </div>
 
@@ -134,7 +137,7 @@
                     <div class="profil-info">Use the "Choose File" button below to upload the images of your property. Pictures will be uploaded together but they will appear one by one. They might take time to appear depending on the speed of your internet connection</div><br>
                     <div></div>
                     <div></div>
-                    <input name="p-profile" class="file-upload" type="file" multiple>
+                    <input name="p-profile" class="file-upload" upload_to='properties/%Y/%m/%d' type="file" accept="image/*">
                 </div>
             </div>
         </div>
@@ -142,7 +145,7 @@
             <div class="card card-second">
                 <div class="card-header ">Map Location addres</div>
                 <div class="card-body">
-                    <img class="image-fluide" src="{% static 'img/oip.jpg'%}" alt="">
+                    <img class="image-fluide image-location" src="{% static 'img/oip.jpg'%}" alt="">
                     <div class="">
                         <label for="">Latitude</label><br>
                         <input name="latitude" type="text"><br>
@@ -169,4 +172,5 @@
         }
     }
 </script>
+
 {% endblock content %}

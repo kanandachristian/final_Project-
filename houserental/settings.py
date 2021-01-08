@@ -26,7 +26,15 @@ SECRET_KEY = '1w#qc1#47)uylr^-@lv@_(7gk3_08n12^u2@r93(zioh!@0@7m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_HOST_USER = 'kanandachristian@gmail.com'
+EMAIL_HOST_PASSWORD = '0736187588'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.1.158',
+                 '192.168.15.201', '192.168.43.118']
 
 
 # Application definition

@@ -590,6 +590,9 @@ header .menu-toggle {
     background: #f5bcbc;
 }
 
+
+/* login form css  */
+
 .auth-content {
     width: 30%;
     margin: 50px auto;
@@ -948,6 +951,29 @@ header .menu-toggle {
         height: auto;
         margin-top: 2%;
         margin-bottom: 4%;
+    }
+    .login-body {
+        height: auto;
+    }
+    .auth-content {
+        width: 100%;
+        margin: 50px auto;
+        padding: 20px;
+        background: rgb(241, 241, 241);
+        border-radius: 5px;
+    }
+    .auth-content .form-title {
+        text-align: center;
+    }
+    .auth-content form div {
+        margin-bottom: 10px;
+    }
+    .auth-content form p {
+        text-align: center;
+    }
+    .auth-content form p a {
+        text-decoration: underline;
+        color: #e0e0e0;
     }
 }
 

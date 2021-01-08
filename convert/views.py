@@ -4,6 +4,7 @@ from django.core.paginator import Paginator, EmptyPage
 from django.contrib import messages
 from rental.models import (contactu,  Category, Landlord, Propertie, Property_image,
                            Property_Taken,  BookedPropertie, Employee, Signup)
+from convert.models import Rate
 from django.db.models import Q
 # Create your views here.
 
@@ -48,63 +49,68 @@ def actionconv(request, category_slug=None):
         rwf = 'RWF'
         usd = 'USD'
         fc = 'FC'
-        tauxA = 932
-        tauxV = 1600
+        tauxA = 980
+        tauxV = 2000
         value = 0.0
 
         if currence1 != currence2:
-            if currence1 == 1 and currence2 == 2:
-                value = amount * tauxA
-                x = 1 * tauxA
-                y = 1 / tauxA
-                tot = {"am": amount, "tauxA": tauxA, "tauxV": tauxV,
-                       "value": value, "usd": usd, "rwf": rwf, "fc": fc, "x": x, "y": y}
-                return render(request, 'converter2.html', {'total': tot, 'category': category, 'categories': categories, 'properties': properties})
-            if currence1 == 2 and currence2 == 1:
-                value = amount / tauxA
-                x = 1 * tauxA
-                y = 1 / tauxA
+            try:
+                if currence1 == 1 and currence2 == 2:
+                    value = amount * tauxA
+                    x = 1 * tauxA
+                    y = 1 / tauxA
+                    tot = {"am": amount, "tauxA": tauxA, "tauxV": tauxV,
+                           "value": value, "usd": usd, "rwf": rwf, "fc": fc, "x": x, "y": y}
+                    return render(request, 'converter2.html', {'total': tot, 'category': category, 'categories': categories, 'properties': properties})
+                if currence1 == 2 and currence2 == 1:
+                    value = amount / tauxA
+                    x = 1 * tauxA
+                    y = 1 / tauxA
 
-                tot = {"am": amount, "tauxA": tauxA, "tauxV": tauxV,
-                       "value": value, "usd": usd, "rwf": rwf, "fc": fc, "x": x, "y": y}
-                return render(request, 'converter3.html', {'total': tot, 'category': category, 'categories': categories, 'properties': properties})
-                ############################# USD RWF ####################################################
-            if currence1 == 1 and currence2 == 3:
-                value = amount * tauxV
-                x = 1 * tauxV
-                y = 1 / tauxV
+                    tot = {"am": amount, "tauxA": tauxA, "tauxV": tauxV,
+                           "value": value, "usd": usd, "rwf": rwf, "fc": fc, "x": x, "y": y}
+                    return render(request, 'converter3.html', {'total': tot, 'category': category, 'categories': categories, 'properties': properties})
+                    ############################# USD RWF ####################################################
+                if currence1 == 1 and currence2 == 3:
+                    value = amount * tauxV
+                    x = 1 * tauxV
+                    y = 1 / tauxV
 
-                tot = {"am": amount, "tauxA": tauxA, "tauxV": tauxV,
-                       "value": value, "usd": usd, "rwf": rwf, "fc": fc, "x": x, "y": y}
-                return render(request, 'converter4.html', {'total': tot, 'category': category, 'categories': categories, 'properties': properties})
-            if currence1 == 3 and currence2 == 1:
-                value = amount / tauxV
-                x = 1 * tauxV
-                y = 1 / tauxV
+                    tot = {"am": amount, "tauxA": tauxA, "tauxV": tauxV,
+                           "value": value, "usd": usd, "rwf": rwf, "fc": fc, "x": x, "y": y}
+                    return render(request, 'converter4.html', {'total': tot, 'category': category, 'categories': categories, 'properties': properties})
+                if currence1 == 3 and currence2 == 1:
+                    value = amount / tauxV
+                    x = 1 * tauxV
+                    y = 1 / tauxV
 
-                tot = {"am": amount, "tauxA": tauxA, "tauxV": tauxV,
-                       "value": value, "usd": usd, "rwf": rwf, "fc": fc, "x": x, "y": y}
-                return render(request, 'converter5.html', {'total': tot, 'category': category, 'categories': categories, 'properties': properties})
-                ############################ USD FC ####################################################
-            if currence1 == 2 and currence2 == 3:
-                value = amount * 2
-                x = 1 * 2
-                y = 1 / 2
+                    tot = {"am": amount, "tauxA": tauxA, "tauxV": tauxV,
+                           "value": value, "usd": usd, "rwf": rwf, "fc": fc, "x": x, "y": y}
+                    return render(request, 'converter5.html', {'total': tot, 'category': category, 'categories': categories, 'properties': properties})
+                    ############################ USD FC ####################################################
+                if currence1 == 2 and currence2 == 3:
+                    value = amount * 2
+                    x = 1 * 2
+                    y = 1 / 2
 
-                tot = {"am": amount, "tauxA": tauxA, "tauxV": tauxV,
-                       "value": value, "usd": usd, "rwf": rwf, "fc": fc, "x": x, "y": y}
-                return render(request, 'converter6.html', {'total': tot, 'category': category, 'categories': categories, 'properties': properties})
-            if currence1 == 3 and currence2 == 2:
-                value = amount / 2
-                x = 1 * 2
-                y = 1 / 2
+                    tot = {"am": amount, "tauxA": tauxA, "tauxV": tauxV,
+                           "value": value, "usd": usd, "rwf": rwf, "fc": fc, "x": x, "y": y}
+                    return render(request, 'converter6.html', {'total': tot, 'category': category, 'categories': categories, 'properties': properties})
+                if currence1 == 3 and currence2 == 2:
+                    value = amount / 2
+                    x = 1 * 2
+                    y = 1 / 2
 
-                tot = {"am": amount, "tauxA": tauxA, "tauxV": tauxV,
-                       "value": value, "usd": usd, "rwf": rwf, "fc": fc, "x": x, "y": y}
-                return render(request, 'converter7.html', {'total': tot, 'category': category, 'categories': categories, 'properties': properties})
-            else:
-                return redirect('conversion:Error')
-                ############################ RWF FC ####################################################
+                    tot = {"am": amount, "tauxA": tauxA, "tauxV": tauxV,
+                           "value": value, "usd": usd, "rwf": rwf, "fc": fc, "x": x, "y": y}
+                    return render(request, 'converter7.html', {'total': tot, 'category': category, 'categories': categories, 'properties': properties})
+                else:
+                    return redirect('conversion:Error')
+                    ############################ RWF FC ####################################################
+            except TypeError:
+
+                return HttpResponse('Type Value Error')
+
         else:
             return redirect('conversion:Error')
 
