@@ -4,7 +4,7 @@ from rental import views
 
 urlpatterns = [
     url(r'^register/?', views.register_form, name='register'),
-    url(r'^login/?', views.login_form, name='login'),
+    url(r'^login/?', views.login_form, name='logine'),
     url(r'^signup/?', views.signup_form, name='signup'),
     url(r'^contact_us/?', views.sendMail, name='contact_us'),
     url(r'^SearchResults/?', views.search_result_form, name='searchresult'),

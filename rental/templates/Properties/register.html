@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
 
 
     <link rel="stylesheet" href="{% static 'js/bootstrap.min.js'%}">
@@ -16,53 +16,57 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/home_css.css' %}">
 
     <!--google font-->
-    <link href="https://fonts.googleapis.com/css?family=Candal|Lora&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Candal|Lora&display=swap" rel="stylesheet"> -->
 
 </head>
 
 <body>
-    <div class="auth-content">
-        <form action="{% url 'rental:register'%}" method="POST">
-            {% csrf_token %}
-            <h2 class="form-title">Register</h2>
+    <section class="register-body">
+        <div class="auth-content">
+            <form action="{% url 'rental:register'%}" method="POST">
+                {% csrf_token %}
 
+                <div class="form-title">
+                    <h2>Register</h2>
+                </div>
 
-            <div class="msg error">
-                <li>Username required</li>
-            </div>
+                {% if messages %}
+                <div class="msg error">
+                    <li>{% for m in messages %} {{ m }} {% endfor %}</li>
+                </div>
+                {% endif %}
+                <div>
+                    <label for="">Name</label>
+                    <input required type="text" name="name" class="text-input">
+                </div>
 
-            <div>
-                <label for="">Name</label>
-                <input required type="text" name="name" class="text-input">
-            </div>
+                <div>
+                    <label for="">Username</label>
+                    <input required type="username" name="username" class="text-input">
+                </div>
+                <div>
+                    <label for="">Email</label>
+                    <input required type="email" name="email" class="text-input">
+                </div>
+                <div>
+                    <label for="">Password</label>
+                    <input required type="password" name="password-verf" class="text-input">
+                </div>
+                <div>
+                    <label for="">Password Confirmation</label>
+                    <input required type="password" name="password2" class="text-input">
+                </div>
+                <div>
+                    <button type="submit" class="submit-btn">Register</button>
+                </div>
+                <p>Or <a href="{% url 'rental:logine' %}">Sign In</a></p>
+            </form>
+        </div>
 
-            <div>
-                <label for="">Username</label>
-                <input required type="username" name="username" class="text-input">
-            </div>
-            <div>
-                <label for="">Email</label>
-                <input required type="email" name="email" class="text-input">
-            </div>
-            <div>
-                <label for="">Password</label>
-                <input required type="password" name="password-verf" class="text-input">
-            </div>
-            <div>
-                <label for="">Password Confirmation</label>
-                <input required type="password" name="password" class="text-input">
-            </div>
-            <div>
-                <button type="submit" class="btn btn-big">Register</button>
-            </div>
-            <p>Or <a href="{% url 'rental:login' %}">Sign In</a></p>
-        </form>
-    </div>
+    </section>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
 
     <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
 

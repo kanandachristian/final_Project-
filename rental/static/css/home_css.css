@@ -570,6 +570,13 @@ header .menu-toggle {
 
 /* interrection(msg, error and success) */
 
+.register-body {
+    background-color: rgb(232, 231, 229);
+    width: 100%;
+    min-height: 100vh;
+    padding: 5% 5% 1% 35%;
+}
+
 .msg {
     width: 100%;
     margin: 5px auto;
@@ -593,9 +600,14 @@ header .menu-toggle {
 
 /* login form css  */
 
+.login-body {
+    background-color: rgb(232, 231, 229);
+    padding: 5% 5% 1% 35%;
+}
+
 .auth-content {
-    width: 30%;
-    margin: 50px auto;
+    width: 50%;
+    /* margin: 50px auto; */
     padding: 20px;
     background: white;
     border-radius: 5px;
@@ -603,10 +615,30 @@ header .menu-toggle {
 
 .auth-content .form-title {
     text-align: center;
+    background-color: rgb(38, 102, 102);
+    color: white;
+    font-family: Calibri;
+    padding: 2%;
+    border-radius: 2.5px;
+    text-decoration: none;
+}
+
+.auth-content .form-title h2 {
+    text-decoration: none;
+    color: white;
+    font-family: Calibri;
 }
 
 .auth-content form div {
     margin-bottom: 10px;
+}
+
+.submit-btn {
+    background-color: rgb(38, 102, 102);
+    color: white;
+    padding: 3% 6% 3% 6%;
+    border: none;
+    border-radius: 2.5px;
 }
 
 .auth-content form p {
@@ -615,7 +647,7 @@ header .menu-toggle {
 
 .auth-content form p a {
     text-decoration: underline;
-    color: #e0e0e0;
+    color: #7b7676;
 }
 
 
@@ -952,8 +984,11 @@ header .menu-toggle {
         margin-top: 2%;
         margin-bottom: 4%;
     }
-    .login-body {
-        height: auto;
+    .register-body {
+        background-color: rgb(232, 231, 229);
+        width: 100%;
+        min-height: 100vh;
+        padding: 0;
     }
     .auth-content {
         width: 100%;
@@ -973,7 +1008,7 @@ header .menu-toggle {
     }
     .auth-content form p a {
         text-decoration: underline;
-        color: #e0e0e0;
+        color: #7b7676;
     }
 }
 

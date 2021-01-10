@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.core.paginator import Paginator, EmptyPage
 from django.contrib import messages
-from rental.models import (contactu,  Category, Landlord, Propertie, Property_image,
-                           Property_Taken,  BookedPropertie, Employee, Signup)
+from rental.models import*
 from convert.models import Rate
 from django.db.models import Q
 # Create your views here.
