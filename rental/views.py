@@ -6,9 +6,9 @@ from django.core.paginator import Paginator, EmptyPage
 from django.contrib import messages
 from django.core.mail import BadHeaderError, send_mail
 from django.db import IntegrityError
+from django.contrib.auth import authenticate
 
-from .models import (contactu,  Category, Landlord, Propertie, Property_image,
-                     Property_Taken,  BookedPropertie, Employee, Signup)
+from .models import*
 from django.db.models import Q
 
 # Create your views here.
@@ -250,21 +250,58 @@ def register_form(request):
 
         name = request.POST["name"]
         username = request.POST["username"]
-        password = request.POST['password']
+        password = request.POST['password-verf']
+        secondpass = request.POST['password2']
         emaille = request.POST['email']
 
-        Signup.objects.create(
-            U_name=name,
-            U_username=username,
-            U_Userpassword=password,
-            U_email=emaille,
-        )
-        return render(request, 'Properties/third.html')
+        if password == secondpass:
+            Signup.objects.create(
+                U_name=name,
+                U_username=username,
+                U_Userpassword=password,
+                U_email=emaille,
+            )
+            return render(request, 'Properties/login.html')
 
-    return render(request, 'Properties/third.html')
+        else:
+            messages.info(request, 'Please match the password')
+            return redirect('rental:signup')
+
+    return render(request, 'Properties/login.html')
 
 
 def login_form(request):
+
+    if request.method == 'POST':
+
+        username = request.POST['Username']
+        password = request.POST['Password']
+
+        usern = Signup.objects.filter(
+            U_username=username)
+        passw = Signup.objects.filter(U_Userpassword=password)
+
+        usernpassw = Signup.objects.filter(
+            U_username=username, U_Userpassword=password)
+
+        if usern:
+            messages.info(request, 'Incorrect password')
+            return redirect('rental:logine')
+
+        if passw:
+            messages.info(request, 'Incorrect Username')
+            return redirect('rental:logine')
+
+        if usernpassw:
+            return redirect('rental:home_page')
+
+        else:
+            messages.info(request, 'Incorrect Username and password')
+            return redirect('rental:logine')
+
+    else:
+        template = 'Properties/login.html'
+        return render(request, template)
     return render(request, 'Properties/login.html')
 
 

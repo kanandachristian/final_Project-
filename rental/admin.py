@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.utils.html import format_html
-from .models import (contactu,  Category, Landlord, Propertie,
-                     Property_image, Property_Taken, BookedPropertie, Employee, Signup)
+from .models import*
 from convert.models import Rate
 # Admin site
 admin.site.site_header = 'Houserental Admin'

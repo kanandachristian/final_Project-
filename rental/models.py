@@ -56,8 +56,7 @@ class Propertie(models.Model):
         max_length=200, db_index=True, null=True, blank=True)
     number = models.CharField(
         max_length=200, db_index=True, null=True, blank=True)
-    image = models.ImageField(
-        upload_to='properties/%Y/%m/%d', blank=True)
+    image = models.ImageField(blank=True)
     landlord_Id = models.ForeignKey(
         Landlord, related_name='landlord', on_delete=models.CASCADE)
     available = models.BooleanField(default=True)
@@ -85,6 +84,10 @@ class Property_image(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ('pro_id',)
+        verbose_name = 'Property Image'
+
 
 class Property_Taken(models.Model):
     customer_type = models.CharField(max_length=100, db_index=True)
@@ -109,7 +112,7 @@ class Property_Taken(models.Model):
 
     class Meta:
         ordering = ('customer_id',)
-        verbose_name = 'Property_Taken'
+        verbose_name = 'Property Taken'
 
     def __str__(self):
         return self.customer_name
